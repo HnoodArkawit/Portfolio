@@ -31,12 +31,13 @@
 </head>
 
 <style type="text/css">
+
      .menu li a:hover {
             background-color: #f0f0f0; /* لون الخلفية عند تمرير الماوس */
             color: black; /* لون النص عند تمرير الماوس */
             border-radius: 5px; /* لجعل الزوايا مستديرة */
         }
-
+        
   .box {
     position: relative;
     width: 300px; /* حجم أكبر */
@@ -652,6 +653,7 @@ img:hover {
         letter-spacing: 0.33em;
         z-index: 3;
     }
+    
 </style>
 
 <body class="slides horizontal simplifiedMobile animated">
@@ -838,48 +840,36 @@ img:hover {
     </svg>
 
     <!-- Panel Top #05 -->
-    <div class="custom-navbar" style="background-color: transparent; position: fixed; width: 100%; z-index: 100;">
-        <div class="sections desktop" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
-            <a href="#" class="left">
-                <img src="assets/img/logoo.png" alt="logo" width="100" height="80">
-            </a>
-    
-            <div class="center">
-                <ul class="menu" style="font-family: 'Cairo', sans-serif; list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;">
-                    <li style="display: inline;">
-                        <a href="#download" style="text-decoration: none; font-size:20px; padding: 10px; transition: background-color 0.3s ease;">تواصل معانا</a>
-                    </li>
-                    <li style="display: inline;">
-                        <a href="#Tools" style="text-decoration: none; font-size:20px; padding: 10px; transition: background-color 0.3s ease;">المهارات</a>
-                    </li>
-                    <li style="display: inline;">
-                        <a href="#case" style="text-decoration: none; font-size:20px; padding: 10px; transition: background-color 0.3s ease;">المشاريع</a>
-                    </li>
-                    <li style="display: inline;">
-                        <a href="#features" style="text-decoration: none; font-size:20px; padding: 10px; transition: background-color 0.3s ease;">الخبرات</a>
-                    </li>
-                    <li style="display: inline;">
-                        <a href="#videos" style="text-decoration: none; font-size:20px; padding: 10px; transition: background-color 0.3s ease;">الدورات والكورسات</a>
-                    </li>
-                    <li style="display: inline;">
-                        <a href="#" style="text-decoration: none; font-size:20px; padding: 10px; transition: background-color 0.3s ease;">عن مهند</a>
-                    </li>
-                </ul>
-            </div>
+    <nav class="panel top">
+        <div class="sections desktop">
+                          <a href="#" class="left">
+                          <img src="assets/img/logoo.png" alt="logo" width="100" height="80">
+                      </a>
+      
+          <div class="center">
+            <ul class="menu" style="font-family: 'Cairo', sans-serif;">
+                <li><a href="#download">تواصل معانا</a></li>
+                <li><a href="#Tools">المهارات</a></li>
+                <li><a href="#case">المشاريع</a></li>
+                <li><a href="#features">الخبرات</a></li>
+                <li><a href="#videos">الدورات والكورسات</a></li>
+                <li><a href="#">عن مهند</a></li>
+                  <!-- قائمة منفصلة لتحميل السيرة الذاتية -->
+                <li><a href="assets/cv-arabic.pdf" class="download" download style="text-decoration: none; padding: 10px; display: block; border: 1px solid #ccc; border-radius: 5px; background-color: black;">تحميل السيرة الذاتية (عربي)</a></li>
+                <li><a href="assets/cv-english.pdf"class="download" download style="text-decoration: none; padding: 10px; display: block; border: 1px solid #ccc; border-radius: 5px; background-color: black;">Download CV (English)</a></li>
+            </ul>
+            
+          
+            
+          </div>
         </div>
         <div class="sections compact hidden">
-            <a href="#" class="left">
-                <img src="assets/img/logo.png" alt="logo" width="70" height="70">
-            </a>
-            <div class="right">
-                <span class="button actionButton sidebarTrigger" data-sidebar-id="1">
-                    <svg>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use>
-                    </svg>
-                </span>
-            </div>
+                          <a href="#" class="left">
+                          <img src="~/assets/img/logo.png" alt="logo" width="70" height="70">
+                      </a>
+          <div class="right"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span</div>
         </div>
-    </div>
+      </nav>
 
     
     <!-- Sidebar -->
