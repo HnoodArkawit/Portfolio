@@ -61,7 +61,7 @@
 
 .box span {
     position: absolute;
-    top: 0;
+    top: 25%;
     left: 0;
     width: 70%;
     height: 70%;
@@ -372,13 +372,18 @@ img:hover {
     }
 
     .mainsocial {
-        display: flex;
-        flex-wrap: wrap;
-        width: 14em;
-        align-items: center;
-        justify-content: center;
-        z-index: -1;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* لتوسيط العناصر أفقياً */
+    align-items: center; /* لتوسيط العناصر عمودياً */
+    width: 100%; /* لملء العرض الكامل للصفحة */
+    max-width: 14em; /* عرض أقصى لتحديد عرض العنصر */
+    margin: 0 auto; /* توسيط العنصر في منتصف الصفحة */
+    position: relative; /* وضع النسق بحيث يمكن استخدام z-index */
+    z-index: 1; /* اجعل القيمة أعلى من -1 لتكون العناصر مرئية */
+}
+
+
 
     .cardsocial {
         width: 60px;
@@ -865,7 +870,7 @@ img:hover {
         </div>
         <div class="sections compact hidden">
                           <a href="#" class="left">
-                          <img src="~/assets/img/logo.png" alt="logo" width="70" height="70">
+                          <img src="assets/img/logoo.png" alt="logo" width="70" height="70">
                       </a>
           <div class="right"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span</div>
         </div>
@@ -879,7 +884,7 @@ img:hover {
             </svg></div>
         <div class="content">
             <a href="#" class="header-logo">
-                <img src="assets/img/logo.png" alt="logo" width="100" height="80">
+                <img src="assets/img/logoo.png" alt="logo" width="100" height="80">
             </a>
             <ul class="mainMenu margin-top-3" style="font-family: 'Cairo', sans-serif;">
                 <li><a href="#">عن مهند</a></li>
@@ -888,6 +893,9 @@ img:hover {
                 <li><a href="#case">المشاريع</a></li>
                 <li><a href="#Tools">المهارات</a></li>
                 <li><a href="#download">تواصل معانا</a></li>
+                <li><a href="assets/cv-arabic.pdf" class="download" download style="text-decoration: none; padding: 10px; display: block; border: 1px solid #ccc; border-radius: 5px; background-color: black;">تحميل السيرة الذاتية (عربي)</a></li>
+                <br>
+                <li><a href="assets/cv-english.pdf"class="download" download style="text-decoration: none; padding: 10px; display: block; border: 1px solid #ccc; border-radius: 5px; background-color: black;">Download CV (English)</a></li>
             </ul>
         </div>
     </nav>
@@ -1522,10 +1530,7 @@ Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
     <section class="slide fade-12 kenBurns" data-name="download">
         <div class="content">
             <div class="container">
-                <div class="wrap">
-
-                    <div style="margin-left: 43%;">
-
+                <div class="wrap" style="padding: 0px;">
                         <div class="mainsocial">
                             <div class="cardsocial">
                                 <a href="https://www.facebook.com/SystemDotProject?mibextid=ZbWKwL">
@@ -1606,8 +1611,6 @@ Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
                         </div>
 
                     </div>
-
-                </div>
             </div>
         </div>
         <div class="background" style="background-image:url(assets/img/background/img-3.jpg)"></div>
