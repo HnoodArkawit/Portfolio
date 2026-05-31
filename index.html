@@ -32,6 +32,62 @@
 
 <style type="text/css">
 
+
+    .image-modal {
+        display: none;
+        position: fixed;
+        z-index: 999999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,.9);
+    }
+
+        .image-modal img {
+            display: block;
+            margin: auto;
+            max-width: 90%;
+            max-height: 90%;
+            margin-top: 2%;
+        }
+
+    .close {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        font-size: 40px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .short-text {
+        max-height: 120px;
+        overflow: hidden;
+        transition: .3s;
+    }
+
+        .short-text.expanded {
+            max-height: 1000px;
+        }
+
+    .read-more-btn {
+        display: inline-block;
+        color: #00bfff;
+        cursor: pointer;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .preview-image {
+        cursor: pointer;
+        transition: .3s;
+    }
+
+        .preview-image:hover {
+            transform: scale(1.05);
+        }
+
      .menu li a:hover {
             background-color: #f0f0f0; /* لون الخلفية عند تمرير الماوس */
             color: black; /* لون النص عند تمرير الماوس */
@@ -1197,13 +1253,13 @@ img:hover {
                         <div class="grid">
                             <h1 style="font-family: 'Cairo', sans-serif;text-align:center;margin-bottom:100px"
                                 class="ae-1 fromLeft">الخبرات</h1>
-                            <div class="col-6-12 left">
+                            <div class="col-4-12 left">
                                 <div class="custom-block custom-block-full"
                                     style="background-color: black;opacity: 0.7;">
                                     <div class="custom-block-image-wrap">
                                         <a href="#">
                                             <img style="height:100%" src="assets/img/File/ts.png"
-                                                class="custom-block-image img-fluid" alt="">
+                                                class="custom-block-image img-fluid preview-image" alt="">
                                         </a>
                                     </div>
                                     <div class="custom-block-info">
@@ -1212,7 +1268,7 @@ img:hover {
                                                 الفني</strong>
                                         </h5>
                                         <br>
-                                        <p class="mb-0"
+                                        <p class="mb-0 short-text"
                                             style="font-family: 'Cairo', sans-serif;text-align:center;font-size:15px">
                                             عملت كمتدرب في قسم تكنولوجيا المعلومات والاتصالات في مختبرات الحاسب الآلي في كلية الإمارات للعلوم والتكنولوجيا وكانت واجباتي هي
 •
@@ -1224,7 +1280,7 @@ img:hover {
 إجراء الفحوصات التشخيصية وخدمة أجهزة تكنولوجيا المعلومات الأساسية
 شرح مشكلات تكنولوجيا المعلومات المعقدة للموظفين غير التقنيين
 تحديد وحل مشاكل تكنولوجيا المعلومات وتسجيلها في قواعد البيانات ذات الصلة</p>
-                                        <br>
+                                        <span class="read-more-btn">المزيد</span>
 
                                         <div class="custom-block-bottom d-flex justify-content-between mt-3"
                                             style="text-align: center;">
@@ -1243,13 +1299,13 @@ img:hover {
 
                                 </div>
                             </div>
-                            <div class="col-6-12 left">
+                            <div class="col-4-12 left">
                                 <div class="custom-block custom-block-full"
                                     style="background-color: black;opacity: 0.7;">
                                     <div class="custom-block-image-wrap">
                                         <a href="#">
                                             <img style="height:100%" src="assets/img/File/programming.png"
-                                                class="custom-block-image img-fluid" alt="">
+                                                class="custom-block-image img-fluid preview-image" alt="">
                                         </a>
                                     </div>
 
@@ -1258,7 +1314,7 @@ img:hover {
                                             <strong style="font-family: 'Cairo', sans-serif;"> مبرمج ومطور </strong>
                                         </h5>
                                         <br>
-                                        <p class="mb-0"
+                                        <p class="mb-0 short-text"
                                             style="font-family: 'Cairo', sans-serif;text-align:center;font-size:15px">
                                             عملت كمطور دوت نت في قسم تكنولوجيا المعلومات والاتصالات 
                                             <br>
@@ -1273,8 +1329,7 @@ img:hover {
 <br>
 Visual Studio / Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting.
 Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
-                                        <br>
-                                        <br><br><br>
+                                        <span class="read-more-btn">المزيد</span>
                                         <div class="custom-block-bottom d-flex justify-content-between mt-3"
                                             style="text-align: center;">
 
@@ -1292,13 +1347,13 @@ Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
 
                                 </div>
                             </div>
-                            <div style="margin-top: 20px;" class="col-6-12">
+                            <div class="col-4-12">
                                 <div class="custom-block custom-block-full"
                                     style="background-color: black;opacity: 0.7;">
                                     <div class="custom-block-image-wrap">
                                         <a href="#">
                                             <img style="height:100%" src="assets/img/File/maintenance.png"
-                                                class="custom-block-image img-fluid" alt="">
+                                                class="custom-block-image img-fluid preview-image" alt="">
                                         </a>
                                     </div>
 
@@ -1307,7 +1362,7 @@ Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
                                             <strong style="font-family: 'Cairo', sans-serif;">مهندس الصيانة</strong>
                                         </h5>
                                         <br>
-                                        <p class="mb-0"
+                                        <p class="mb-0 short-text"
                                             style="font-family: 'Cairo', sans-serif;text-align:center;font-size:15px">
                                             عملت في وحدة الاتصالات وتقنية المعلومات بكلية الإمارات للعلوم والتكنولوجيا كمهندس صيانة .
 وقامت خلال تلك الفترة بالمهام التالية:
@@ -1320,7 +1375,7 @@ Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
 تركيب نظام جديد لجميع الموظفين.
 توفير التدريب لجميع المستخدمين.
 إصلاح الأجهزة وترقيتها والتأكد من أن جميع أجهزة الكمبيوتر تعمل بكامل طاقتها.</p>
-                                        <br>
+                                        <span class="read-more-btn">المزيد</span>
 
                                         <div class="custom-block-bottom d-flex justify-content-between mt-3"
                                             style="text-align: center;">
@@ -1339,13 +1394,13 @@ Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
 
                                 </div>
                             </div>
-                            <div style="margin-top: 20px;" class="col-6-12">
+                            <div style="margin-top: 20px;" class="col-4-12">
                                 <div class="custom-block custom-block-full"
                                     style="background-color: black;opacity: 0.7;">
                                     <div class="custom-block-image-wrap">
                                         <a href="#">
                                             <img style="height:100%" src="assets/img/File/designer.png"
-                                                class="custom-block-image img-fluid" alt="">
+                                                class="custom-block-image img-fluid preview-image" alt="">
                                         </a>
                                     </div>
 
@@ -1354,7 +1409,7 @@ Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
                                             <strong style="font-family: 'Cairo', sans-serif;"> مصمم جرافيك</strong>
                                         </h5>
                                         <br>
-                                        <p class="mb-0"
+                                        <p class="mb-0 short-text"
                                             style="font-family: 'Cairo', sans-serif;text-align:center;font-size:15px">
                                             عملت في كلية الإمارات للعلوم والتكنولوجيا كمصمم للمجلات والصحف والملفات والإعلانات والأيقونات الخاصة بالكلية.
                                             كونها نقطة الاتصال الأولى لجميع قضايا التصميم.
@@ -1362,7 +1417,7 @@ Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
                                             تصميم الملفات والملصقات.
                                             • تصميم الإعلانات والملصقات.
                                             تصميم الأوراق والظروف.</p>
-                                        <br><br><br><br><br><br><br><br><br><br><br><br>
+                                        <span class="read-more-btn">المزيد</span>
 
                                         <div class="custom-block-bottom d-flex justify-content-between mt-3"
                                             style="text-align: center;">
@@ -1381,13 +1436,13 @@ Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
 
                                 </div>
                             </div>
-                            <div style="margin-top: 20px;" class="col-6-12">
+                            <div style="margin-top: 20px;" class="col-4-12">
                                 <div class="custom-block custom-block-full"
                                     style="background-color: black;opacity: 0.7;">
                                     <div class="custom-block-image-wrap">
                                         <a href="#">
                                             <img style="height:100%" src="assets/img/File/habib.jpg"
-                                                class="custom-block-image img-fluid" alt="">
+                                                class="custom-block-image img-fluid preview-image" alt="">
                                         </a>
                                     </div>
 
@@ -1397,7 +1452,7 @@ Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
                                                 المعلومات</strong>
                                         </h5>
                                         <br>
-                                        <p class="mb-0"
+                                        <p class="mb-0 short-text"
                                             style="font-family: 'Cairo', sans-serif;text-align:center;font-size:15px">
                                             عملت في قسم تقنية المعلومات في شركة محمد عيسى الحبيب للمنتجات المعدنية.
                                      أن نكون نقطة الاتصال الأولى لجميع قضايا تكنولوجيا المعلومات. وأن تكون واجباتي 
@@ -1411,7 +1466,7 @@ Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
                                             شركة
                                             • صيانة أجهزة الكمبيوتر، بما في ذلك البرامج والمعدات
                                             تدريب العاملين على استخدام الحاسب الآلي</p>
-                                        <br>
+                                        <span class="read-more-btn">المزيد</span>
 
                                         <div class="custom-block-bottom d-flex justify-content-between mt-3"
                                             style="text-align: center;">
@@ -1430,13 +1485,13 @@ Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
 
                                 </div>
                             </div>
-                            <div style="margin-top: 20px;" class="col-6-12">
+                            <div style="margin-top: 20px;"class="col-4-12">
                                 <div class="custom-block custom-block-full"
                                     style="background-color: black;opacity: 0.7;">
                                     <div class="custom-block-image-wrap">
                                         <a href="#">
                                             <img style="height:100%" src="assets/img/File/rmoosh.jpg"
-                                                class="custom-block-image img-fluid" alt="">
+                                                class="custom-block-image img-fluid preview-image" alt="">
                                         </a>
                                     </div>
 
@@ -1446,7 +1501,7 @@ Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
                                                 المعلومات</strong>
                                         </h5>
                                         <br>
-                                        <p class="mb-0"
+                                        <p class="mb-0 short-text"
                                             style="font-family: 'Cairo', sans-serif;text-align:center;font-size:15px">
                                             عملت في قسم تقنية المعلومات في مؤسسة انس العنزي للتجارة في رموش 
                                             أن نكون نقطة الاتصال الأولى لجميع قضايا تكنولوجيا المعلومات. وأن تكون واجباتي 
@@ -1456,7 +1511,7 @@ Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
                                             • تنفيذ استراتيجيات التسويق الرقمي وتقديم الدعم الفني. 
                                             • الإشراف على جميع جوانب العمليات في متجر التجارة الإلكترونية، بما في ذلك معالجة الطلبات وتلبيتها.
                                             </p>
-                                        <br><br><br><br><br><br>
+                                        <span class="read-more-btn">المزيد</span>
 
                                         <div class="custom-block-bottom d-flex justify-content-between mt-3"
                                             style="text-align: center;">
@@ -1746,10 +1801,52 @@ Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
     <div class="progress-bar blue"></div>
 
 </body>
-
+<div id="imageModal" class="image-modal">
+    <span class="close">&times;</span>
+    <img id="modalImage">
+</div>
 </html>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 <script src="lib/sweetalert/sweetalert.min.js"></script>
+<script>
+    document.addEventListener("click", function (e) {
+
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+
+        /* =====================
+           المزيد / إخفاء
+        ===================== */
+        if (e.target.classList.contains("read-more-btn")) {
+
+            const p = e.target.previousElementSibling;
+
+            p.classList.toggle("expanded");
+
+            e.target.innerText =
+                p.classList.contains("expanded")
+                    ? "إخفاء"
+                    : "المزيد";
+        }
+
+        /* =====================
+           فتح الصورة
+        ===================== */
+        if (e.target.classList.contains("preview-image")) {
+            modal.style.display = "block";
+            modalImg.src = e.target.src;
+        }
+
+        /* =====================
+           إغلاق المودال
+        ===================== */
+        if (e.target.id === "imageModal" ||
+            e.target.classList.contains("close")) {
+            modal.style.display = "none";
+        }
+
+    });
+</script>
