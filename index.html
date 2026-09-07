@@ -1,38 +1,339 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
-    <!-- Page Title -->
     <title>Dev Muhanad</title>
     <link rel="shortcut icon" href="assets/img/logoo.png" type="image/x-icon">
 
-    <!-- Compressed Styles -->
     <link href="css/slides.min.css" rel="stylesheet" type="text/css">
-    <meta name="viewport" content="الموقع الرسمي ل مهند عبدالحميد محمد, initial-scale=1.0">
     <meta name="description"
-        content="تقديم خدمات متخصصة في تصميم مواقع الويب  والشعارات والهوية البصرية للأفراد والشركات، ومتابعة وصيانة الحواسيب.">
+          content="تقديم خدمات متخصصة في تصميم مواقع الويب والشعارات والهوية البصرية للأفراد والشركات، ومتابعة وصيانة الحواسيب.">
     <link rel="stylesheet" href="assets/fonts/lineicons/font-css/LineIcons.css">
 
-    <!-- jQuery 3.3.1 -->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
     <script src="js/jquery.min.js"></script>
-
-    <!-- Compressed Scripts -->
     <script src="js/slides.min.js" type="text/javascript"></script>
 
-    <!-- Fonts and Material Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <style type="text/css">
 
+    /* =========================================
+   خلفية موجية احترافية (SVG متحرك) - تتكيف مع المود
+========================================= */
+    .wave-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+        background: var(--bg-color, #0b0e14);
+        transition: background 0.5s ease;
+    }
 
+        .wave-bg svg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .wave-bg .wave1 {
+            animation: waveMove 14s ease-in-out infinite alternate;
+        }
+
+        .wave-bg .wave2 {
+            animation: waveMove 18s ease-in-out infinite alternate-reverse;
+        }
+
+        .wave-bg .wave3 {
+            animation: waveMove 22s ease-in-out infinite alternate;
+        }
+
+        .wave-bg .wave4 {
+            animation: waveMove 26s ease-in-out infinite alternate-reverse;
+        }
+
+    @keyframes waveMove {
+        0% {
+            transform: translateX(0) translateY(0);
+        }
+
+        100% {
+            transform: translateX(-120px) translateY(-40px);
+        }
+    }
+
+    /* ألوان الموجات - الوضع الليلي (افتراضي) */
+    .wave-bg .wave1 path {
+        fill: rgba(0, 212, 255, 0.06);
+    }
+
+    .wave-bg .wave2 path {
+        fill: rgba(123, 47, 252, 0.05);
+    }
+
+    .wave-bg .wave3 path {
+        fill: rgba(0, 212, 255, 0.04);
+    }
+
+    .wave-bg .wave4 path {
+        fill: rgba(123, 47, 252, 0.03);
+    }
+
+    /* ألوان الموجات - الوضع النهاري */
+    body:not(.dark-mode) .wave-bg .wave1 path {
+        fill: rgba(0, 150, 255, 0.10);
+    }
+
+    body:not(.dark-mode) .wave-bg .wave2 path {
+        fill: rgba(100, 50, 255, 0.08);
+    }
+
+    body:not(.dark-mode) .wave-bg .wave3 path {
+        fill: rgba(0, 150, 255, 0.06);
+    }
+
+    body:not(.dark-mode) .wave-bg .wave4 path {
+        fill: rgba(100, 50, 255, 0.04);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Cairo', sans-serif !important;
+        transition: background-color 0.5s ease, color 0.5s ease;
+        background-color: #0b0e14;
+        color: #e6edf3;
+    }
+
+        /* =========================================
+       الوضع الليلي (افتراضي)
+    ========================================= */
+        body.dark-mode {
+            background-color: #0b0e14 !important;
+            color: #e6edf3 !important;
+        }
+
+            body.dark-mode .slide {
+                background-color: #0b0e14 !important;
+            }
+
+                body.dark-mode .slide .background {
+                    filter: brightness(0.35) contrast(1.15);
+                }
+
+            body.dark-mode .panel.top,
+            body.dark-mode .panel.bottom,
+            body.dark-mode .sidebar {
+                background-color: rgba(11, 14, 20, 0.95) !important;
+            }
+
+            body.dark-mode .menu li a {
+                color: #f0f6fc !important;
+            }
+
+                body.dark-mode .menu li a:hover {
+                    background-color: #21262d !important;
+                    color: #00bfff !important;
+                }
+
+            body.dark-mode .custom-block-full {
+                background-color: rgba(22, 27, 34, 0.88) !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            }
+
+                body.dark-mode .custom-block-full h5 strong,
+                body.dark-mode .custom-block-full p,
+                body.dark-mode .custom-block-bottom a,
+                body.dark-mode .custom-block-bottom span {
+                    color: #e6edf3 !important;
+                }
+
+            body.dark-mode .single-team {
+                background-color: #161b22 !important;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            body.dark-mode .imgpro-text {
+                background-color: #0d1117 !important;
+            }
+
+                body.dark-mode .imgpro-text h4,
+                body.dark-mode .imgpro-text h5 {
+                    color: #f0f6fc !important;
+                }
+
+            body.dark-mode .artists-hover {
+                background-color: rgba(22, 27, 34, 0.92) !important;
+                color: #f0f6fc !important;
+            }
+
+                body.dark-mode .artists-hover p,
+                body.dark-mode .artists-hover strong {
+                    color: #f0f6fc !important;
+                }
+
+            body.dark-mode .box span img {
+                background: #161b22;
+                border-color: #30363d;
+            }
+
+            body.dark-mode .cardsocial {
+                background: rgba(33, 38, 45, 0.85);
+            }
+
+            body.dark-mode .text {
+                color: #ffffff;
+            }
+
+            body.dark-mode .control-btn {
+                background: rgba(33, 38, 45, 0.9);
+                border-color: rgba(255, 255, 255, 0.2);
+            }
+
+            body.dark-mode .close {
+                color: #fff;
+            }
+
+            body.dark-mode .read-more-btn {
+                color: #00bfff;
+            }
+
+        /* =========================================
+       الوضع النهاري
+    ========================================= */
+        body:not(.dark-mode) {
+            background-color: #f0f2f8 !important;
+            color: #1a1a2e !important;
+        }
+
+            body:not(.dark-mode) .slide {
+                background-color: #f0f2f8 !important;
+            }
+
+                body:not(.dark-mode) .slide .background {
+                    filter: brightness(1) contrast(0.95);
+                }
+
+            body:not(.dark-mode) .panel.top,
+            body:not(.dark-mode) .panel.bottom,
+            body:not(.dark-mode) .sidebar {
+                background-color: rgba(240, 242, 248, 0.92) !important;
+            }
+
+            body:not(.dark-mode) .menu li a {
+                color: #1a1a2e !important;
+            }
+
+                body:not(.dark-mode) .menu li a:hover {
+                    background-color: #e0e4ea !important;
+                    color: #0066cc !important;
+                }
+
+            body:not(.dark-mode) .custom-block-full {
+                background-color: rgba(255, 255, 255, 0.85) !important;
+                border: 1px solid rgba(0, 0, 0, 0.06) !important;
+            }
+
+                body:not(.dark-mode) .custom-block-full h5 strong,
+                body:not(.dark-mode) .custom-block-full p,
+                body:not(.dark-mode) .custom-block-bottom a,
+                body:not(.dark-mode) .custom-block-bottom span {
+                    color: #1a1a2e !important;
+                }
+
+            body:not(.dark-mode) .single-team {
+                background-color: #ffffff !important;
+                border: 1px solid rgba(0, 0, 0, 0.06);
+            }
+
+            body:not(.dark-mode) .imgpro-text {
+                background-color: #f8f9fc !important;
+            }
+
+                body:not(.dark-mode) .imgpro-text h4,
+                body:not(.dark-mode) .imgpro-text h5 {
+                    color: #1a1a2e !important;
+                }
+
+            body:not(.dark-mode) .artists-hover {
+                background-color: rgba(255, 255, 255, 0.92) !important;
+                color: #1a1a2e !important;
+            }
+
+                body:not(.dark-mode) .artists-hover p,
+                body:not(.dark-mode) .artists-hover strong {
+                    color: #1a1a2e !important;
+                }
+
+            body:not(.dark-mode) .box span img {
+                background: #ffffff;
+                border-color: #d0d5dd;
+            }
+
+            body:not(.dark-mode) .cardsocial {
+                background: rgba(255, 255, 255, 0.7);
+            }
+
+            body:not(.dark-mode) .text {
+                color: #1a1a2e;
+            }
+
+            body:not(.dark-mode) .control-btn {
+                background: rgba(255, 255, 255, 0.85);
+                border-color: rgba(0, 0, 0, 0.1);
+                color: #1a1a2e;
+            }
+
+            body:not(.dark-mode) .close {
+                color: #1a1a2e;
+            }
+
+            body:not(.dark-mode) .read-more-btn {
+                color: #0066cc;
+            }
+
+        /* =========================================
+       تنسيقات اللغة الإنجليزية (LTR Mode)
+    ========================================= */
+        body.ltr-mode {
+            direction: ltr !important;
+            text-align: left !important;
+        }
+
+            body.ltr-mode .artists-hover,
+            body.ltr-mode .hero-text,
+            body.ltr-mode .custom-block-info,
+            body.ltr-mode .custom-block-bottom {
+                text-align: left !important;
+                direction: ltr !important;
+            }
+
+            body.ltr-mode .menu {
+                direction: ltr !important;
+            }
+
+            body.ltr-mode .floating-controls {
+                left: auto;
+                right: 25px;
+            }
+
+    /* =========================================
+       مكونات الصفحة
+    ========================================= */
     .image-modal {
         display: none;
         position: fixed;
@@ -41,34 +342,40 @@
         top: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,.9);
+        background: rgba(0,0,0,.92);
+        backdrop-filter: blur(5px);
     }
 
         .image-modal img {
             display: block;
             margin: auto;
             max-width: 90%;
-            max-height: 90%;
-            margin-top: 2%;
+            max-height: 85%;
+            margin-top: 3%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
     .close {
         position: absolute;
-        right: 20px;
-        top: 10px;
+        right: 25px;
+        top: 15px;
         font-size: 40px;
-        color: white;
         cursor: pointer;
+        z-index: 1000000;
+        border: none;
+        background: transparent;
+        color: #fff;
     }
 
     .short-text {
         max-height: 120px;
         overflow: hidden;
-        transition: .3s;
+        transition: max-height 0.4s ease;
     }
 
         .short-text.expanded {
-            max-height: 1000px;
+            max-height: 1200px;
         }
 
     .read-more-btn {
@@ -77,7 +384,16 @@
         cursor: pointer;
         margin-top: 10px;
         font-weight: bold;
+        transition: 0.2s;
+        background: transparent;
+        border: none;
+        font-size: 1rem;
+        font-family: 'Cairo', sans-serif;
     }
+
+        .read-more-btn:hover {
+            color: #ffb5d2;
+        }
 
     .preview-image {
         cursor: pointer;
@@ -88,75 +404,145 @@
             transform: scale(1.05);
         }
 
-     .menu li a:hover {
-            background-color: #f0f0f0; /* لون الخلفية عند تمرير الماوس */
-            color: black; /* لون النص عند تمرير الماوس */
-            border-radius: 5px; /* لجعل الزوايا مستديرة */
+    .menu li a:hover {
+        background-color: #f0f0f0;
+        color: black;
+        border-radius: 5px;
+    }
+
+    /* =========================================
+       قسم المهارات (3D Carousel)
+    ========================================= */
+    .skills-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 480px;
+        perspective: 1200px;
+        overflow: hidden;
+        padding: 40px 0;
+        width: 100%;
+    }
+
+    .box {
+        position: relative;
+        width: 180px;
+        height: 240px;
+        transform-style: preserve-3d;
+        animation: animateCarousel 35s linear infinite;
+        margin: 0 auto;
+    }
+
+        .box:hover {
+            animation-play-state: paused;
         }
-        
-  .box {
-    position: relative;
-    width: 300px; /* حجم أكبر */
-    height: 400px;
-    transform-style: preserve-3d;
-    animation: animate 30s linear infinite; /* التأكد من وجود الأنيميشن */
-    
-}
 
-.box:hover {
-    animation-play-state: paused; /* إيقاف الأنيميشن عند التمرير */
-}
+    @keyframes animateCarousel {
+        0% {
+            transform: perspective(1200px) rotateY(0deg);
+        }
 
-@keyframes animate {
-    0% {
-        transform: perspective(1000px) rotateY(0deg);
+        100% {
+            transform: perspective(1200px) rotateY(360deg);
+        }
     }
-    100% {
-        transform: perspective(1000px) rotateY(360deg);
+
+    .box span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform-origin: center;
+        transform-style: preserve-3d;
+        transform: rotateY(calc(var(--i) * 22.5deg)) translateZ(400px);
+        -webkit-box-reflect: below 8px linear-gradient(transparent, transparent, rgba(4, 4, 4, 0.25));
     }
-}
 
-.box span {
-    position: absolute;
-    top: 25%;
-    left: 0;
-    width: 70%;
-    height: 70%;
-    transform-origin: center;
-    transform-style: preserve-3d;
-    transform: rotateY(calc(var(--i) * 24deg)) translateZ(500px); /* زادنا translateZ */
-    -webkit-box-reflect: below 2px linear-gradient(transparent, transparent, rgba(4, 4, 4, 0.267));
-    
-}
+        .box span img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
 
-.box span img {
-    position: absolute;
-    top: 30%;
-    left: 0;
-    width: 70%;
-    height: 70%;
-    transition: 0.5s;
-    border-radius: 15px;
-    border: 4px double rgb(0, 0, 0);
-}
+            .box span img:hover {
+                transform: scale(1.15) translateY(-10px);
+                border-color: #00bfff;
+                box-shadow: 0 15px 35px rgba(0, 191, 255, 0.5);
+                background: #ffffff;
+            }
 
-img:hover {
-    transform: translateY(-2px);
-}
+    @media (max-width: 768px) {
+        .box {
+            width: 130px;
+            height: 170px;
+        }
+
+            .box span {
+                transform: rotateY(calc(var(--i) * 22.5deg)) translateZ(280px);
+            }
+
+        .skills-container {
+            min-height: 350px;
+            padding: 20px 0;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .box {
+            width: 100px;
+            height: 130px;
+        }
+
+            .box span {
+                transform: rotateY(calc(var(--i) * 22.5deg)) translateZ(220px);
+            }
+
+        .skills-container {
+            min-height: 280px;
+            padding: 15px 0;
+        }
+
+        .box span img {
+            padding: 8px;
+            border-radius: 12px;
+        }
+    }
 
 
-
+    /* =========================================
+       كروت الدورات والخبرات
+    ========================================= */
     .artists-thumb {
         position: relative;
         overflow: hidden;
         margin-bottom: 30px;
+        border-radius: 20px;
+        background: rgba(22, 27, 34, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    body:not(.dark-mode) .artists-thumb {
+        background: rgba(255, 255, 255, 0.7);
+        border-color: rgba(0, 0, 0, 0.06);
     }
 
     .artists-image {
-        border-radius: 20px;
+        border-radius: 20px 20px 0 0;
         display: block;
         width: 100%;
-        height: 400px
+        height: 300px;
+        object-fit: cover;
     }
 
     .artists-thumb:hover .artists-hover {
@@ -165,13 +551,11 @@ img:hover {
     }
 
     .artists-hover {
-        background-color: var(--primary-color);
-        background-color: rgba(248, 203, 46, 0.75);
-        border-radius: 20px;
-        backdrop-filter: blur(5px) saturate(180%);
-        -webkit-backdrop-filter: blur(5px) saturate(180%);
-        margin: 20px;
-        padding: 10px;
+        background-color: rgba(248, 203, 46, 0.92);
+        border-radius: 0 0 20px 20px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        padding: 18px 20px;
         transition: all 0.5s ease;
         transform: translateY(100%);
         position: absolute;
@@ -182,103 +566,53 @@ img:hover {
         text-align: right;
     }
 
+    body.dark-mode .artists-hover {
+        background-color: rgba(22, 27, 34, 0.95);
+    }
+
+    body:not(.dark-mode) .artists-hover {
+        background-color: rgba(255, 255, 255, 0.95);
+    }
+
     .artists-hover p strong {
-        color: var(--white-color);
         display: inline-block;
-        min-width: 180px;
-        margin-right: 20px;
+        min-width: 140px;
     }
 
-    .artists-hover p a {
-        color: var(--secondary-color);
+    body.dark-mode .artists-hover p,
+    body.dark-mode .artists-hover strong,
+    body.dark-mode .artists-hover hr {
+        color: #f0f6fc !important;
+        border-color: rgba(255,255,255,0.1);
     }
 
-    .artists-hover p a:hover {
-        color: var(--white-color);
+    body:not(.dark-mode) .artists-hover p,
+    body:not(.dark-mode) .artists-hover strong,
+    body:not(.dark-mode) .artists-hover hr {
+        color: #1a1a2e !important;
+        border-color: rgba(0,0,0,0.1);
     }
 
     .artists-hover hr {
-        margin: 1.5rem 0;
+        margin: 1rem 0;
     }
 
-
-    .section-title-wrap {
-        position: relative;
-    }
-
-    .section-title-wrap::after {
-        content: "";
-        background: var(--section-bg-color);
-        width: 100%;
-        height: 2px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-    }
-
-    .section-title {
-        background: var(--section-bg-color);
-        border-radius: var(--border-radius-large);
-        display: inline-block;
-        position: relative;
-        z-index: 2;
-        margin-bottom: 0;
-        padding: 10px 25px;
-    }
-
-    .section-padding {
-        padding-top: 100px;
-        padding-bottom: 100px;
-    }
-
-    main {
-        position: relative;
-        z-index: 1;
-    }
-
-    .section-bg {
-        background-color: var(--section-bg-color);
-    }
-
-    .section-overlay {
-        background-color: var(--primary-color);
-        position: absolute;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        width: 100%;
-        height: 100%;
-        opacity: 0.85;
-    }
-
-    .section-overlay+.container {
-        position: relative;
-    }
-
-
+    /* =========================================
+       كروت الخبرات
+    ========================================= */
     .custom-block {
-        border: 2px solid var(--primary-color);
+        border: 2px solid #00bfff;
         border-radius: 20px;
         position: relative;
         overflow: hidden;
-        padding: 30px;
+        padding: 25px;
         transition: all 0.3s ease;
     }
 
-    .custom-block:hover {
-        background: var(--white-color);
-        box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
-        border-color: transparent;
-        transform: translateY(-3px);
-    }
-
-    .custom-block-info {
-        display: block;
-        padding: 10px 20px;
-        padding-bottom: 0;
-    }
+        .custom-block:hover {
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, .25);
+            transform: translateY(-5px);
+        }
 
     .custom-block-image-wrap {
         position: relative;
@@ -286,137 +620,106 @@ img:hover {
         height: 100%;
     }
 
-    .custom-block-image-wrap>a {
-        display: block;
-    }
-
     .custom-block-image {
-        border-radius: 20px;
+        border-radius: 15px;
         display: block;
-        width: 112px;
-        height: 112px;
+        width: 100%;
+        height: 180px;
         object-fit: cover;
     }
 
-    .custom-block-image-detail-page .custom-block-image {
-        width: 100%;
-        height: 212px;
-    }
-
-    .custom-block-btn-group {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        margin: 20px;
-    }
-
-    .custom-block-btn-group .custom-block-icon {
-        position: relative;
-        top: 0;
-        left: 0;
-        transform: none;
-    }
-
-
-    .custom-block .custom-btn {
-        font-size: var(--menu-font-size);
-        padding: 7px 15px;
-    }
-
-    .custom-block .custom-block-info+div .badge {
-        background-color: var(--dark-color);
-        color: var(--white-color);
-        border-radius: 50px !important;
-        font-size: var(--menu-font-size);
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        width: 40px;
-        height: 40px;
-        line-height: 30px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
-
-    .custom-block .custom-block-info+div .badge:hover {
-        background-color: var(--secondary-color);
-    }
-
     .custom-block-full {
-        background-color: var(--section-bg-color);
-        border-color: transparent;
+        background-color: rgba(22, 27, 34, 0.85);
+        border-color: rgba(255, 255, 255, 0.06);
     }
 
-    .custom-block-full:hover {
-        border-color: var(--primary-color);
+    body:not(.dark-mode) .custom-block-full {
+        background-color: rgba(255, 255, 255, 0.85);
+        border-color: rgba(0, 0, 0, 0.06);
     }
 
     .custom-block-full .custom-block-info {
+        padding: 15px 0 0 0;
+    }
+
+    .custom-block-bottom {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    body:not(.dark-mode) .custom-block-bottom {
+        border-top-color: rgba(0,0,0,0.06);
+    }
+
+    /* =========================================
+       المشاريع
+    ========================================= */
+    .single-team {
+        border-radius: 25px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        background: rgba(22, 27, 34, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    body:not(.dark-mode) .single-team {
+        background: #ffffff;
+        border-color: rgba(0, 0, 0, 0.06);
+    }
+
+    .single-team:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    body:not(.dark-mode) .single-team:hover {
+        box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+
+    .imgpro-area img {
+        height: 300px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .imgpro-text {
         padding: 20px;
-        padding-bottom: 0;
+        text-align: center;
+        background: rgba(13, 17, 23, 0.9);
     }
 
-    .custom-block-full .custom-block-image {
-        width: 100%;
-        height: 400px;
+    body:not(.dark-mode) .imgpro-text {
+        background: #f8f9fc;
     }
 
-    .custom-block-full .social-share {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 50px;
+    .imgpro-text h4 {
+        font-family: 'Cairo', sans-serif;
+        font-weight: 700;
     }
 
-    .custom-block-top small {
-        color: var(--p-color);
-        font-family: var(--title-font-family);
+    .imgpro-text h5 {
+        font-family: 'Cairo', sans-serif;
+        font-weight: 400;
+        opacity: 0.7;
+        margin: 10px 0 0;
     }
 
-    .custom-block-top .badge {
-        background-color: var(--secondary-color);
-        color: var(--white-color);
-        display: inline-block;
-        vertical-align: middle;
-        height: 26.64px;
-        line-height: 20px;
+    body.dark-mode .imgpro-text h4,
+    body.dark-mode .imgpro-text h5 {
+        color: #f0f6fc !important;
     }
 
-    .custom-block-bottom a:hover span {
-        color: var(--primary-color);
+    body:not(.dark-mode) .imgpro-text h4,
+    body:not(.dark-mode) .imgpro-text h5 {
+        color: #1a1a2e !important;
     }
 
-    .custom-block-bottom a span {
-        font-family: var(--title-font-family);
-        color: var(--p-color);
-        text-transform: uppercase;
-        margin-left: 3px;
-    }
-
-    .custom-block-overlay {
-        border-color: transparent;
-        padding: 0;
-    }
-
-    .custom-block-overlay .custom-block-image {
-        margin: auto;
-        width: 100%;
-        height: 210px;
-        transition: all 0.3s;
-    }
-
-    .custom-block-overlay:hover .custom-block-image {
-        padding: 15px;
-        padding-bottom: 0;
-    }
-
-    .custom-block-overlay-info {
-        padding: 15px 20px 20px 20px;
-    }
-
-    /*تواصل معانا*/
-
+    /* =========================================
+       وسائل التواصل
+    ========================================= */
 
     .main_backsocial {
         position: absolute;
@@ -430,16 +733,16 @@ img:hover {
     }
 
     .mainsocial {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* لتوسيط العناصر أفقياً */
-    align-items: center; /* لتوسيط العناصر عمودياً */
-    width: 100%; /* لملء العرض الكامل للصفحة */
-    max-width: 14em; /* عرض أقصى لتحديد عرض العنصر */
-    margin: 0 auto; /* توسيط العنصر في منتصف الصفحة */
-    position: relative; /* وضع النسق بحيث يمكن استخدام z-index */
-    z-index: 1; /* اجعل القيمة أعلى من -1 لتكون العناصر مرئية */
-}
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* لتوسيط العناصر أفقياً */
+        align-items: center; /* لتوسيط العناصر عمودياً */
+        width: 100%; /* لملء العرض الكامل للصفحة */
+        max-width: 14em; /* عرض أقصى لتحديد عرض العنصر */
+        margin: 0 auto; /* توسيط العنصر في منتصف الصفحة */
+        position: relative; /* وضع النسق بحيث يمكن استخدام z-index */
+        z-index: 1; /* اجعل القيمة أعلى من -1 لتكون العناصر مرئية */
+    }
 
 
 
@@ -458,206 +761,206 @@ img:hover {
         justify-content: center;
     }
 
-    .cardsocial .instagram {
-        opacity: 0;
-        transition: .2s ease-in-out;
-        fill: #cc39a4;
-    }
+        .cardsocial .instagram {
+            opacity: 0;
+            transition: .2s ease-in-out;
+            fill: #cc39a4;
+        }
 
-    .cardsocial:nth-child(2) {
-        border-radius: 0px;
-    }
+        .cardsocial:nth-child(2) {
+            border-radius: 0px;
+        }
 
-    .cardsocial:nth-child(2) .twitter {
-        opacity: 0;
-        transition: .2s ease-in-out;
-        fill: #03A9F4;
-    }
+            .cardsocial:nth-child(2) .twitter {
+                opacity: 0;
+                transition: .2s ease-in-out;
+                fill: #03A9F4;
+            }
 
-    .cardsocial:nth-child(3) {
-        border-top-right-radius: 10px;
-        border-top-left-radius: 0px;
-    }
+        .cardsocial:nth-child(3) {
+            border-top-right-radius: 10px;
+            border-top-left-radius: 0px;
+        }
 
-    .cardsocial:nth-child(3) .dribble {
-        opacity: 0;
-        transition: .2s ease-in-out;
-        fill: #ffb5d2;
-    }
+            .cardsocial:nth-child(3) .dribble {
+                opacity: 0;
+                transition: .2s ease-in-out;
+                fill: #ffb5d2;
+            }
 
-    .cardsocial:nth-child(4) {
-        border-radius: 0px;
-    }
+        .cardsocial:nth-child(4) {
+            border-radius: 0px;
+        }
 
-    .cardsocial:nth-child(4) .codepen {
-        opacity: 0;
-        transition: .2s ease-in-out;
-        fill: black;
-    }
+            .cardsocial:nth-child(4) .codepen {
+                opacity: 0;
+                transition: .2s ease-in-out;
+                fill: black;
+            }
 
-    .cardsocial:nth-child(5) {
-        border-radius: 0px;
-    }
+        .cardsocial:nth-child(5) {
+            border-radius: 0px;
+        }
 
-    .cardsocial:nth-child(5) .uiverse {
-        position: absolute;
-        margin-left: 0.2em;
-        margin-top: 0.2em;
-        opacity: 0;
-        transition: .2s ease-in-out;
-    }
+            .cardsocial:nth-child(5) .uiverse {
+                position: absolute;
+                margin-left: 0.2em;
+                margin-top: 0.2em;
+                opacity: 0;
+                transition: .2s ease-in-out;
+            }
 
-    .cardsocial:nth-child(6) {
-        border-radius: 0px;
-    }
+        .cardsocial:nth-child(6) {
+            border-radius: 0px;
+        }
 
-    .cardsocial:nth-child(6) .discord {
-        opacity: 0;
-        transition: .2s ease-in-out;
-        fill: #8c9eff;
-    }
+            .cardsocial:nth-child(6) .discord {
+                opacity: 0;
+                transition: .2s ease-in-out;
+                fill: #8c9eff;
+            }
 
-    .cardsocial:nth-child(7) {
-        border-bottom-left-radius: 10px;
-        border-top-left-radius: 0px;
-    }
+        .cardsocial:nth-child(7) {
+            border-bottom-left-radius: 10px;
+            border-top-left-radius: 0px;
+        }
 
-    .cardsocial:nth-child(7) .github {
-        opacity: 0;
-        transition: .2s ease-in-out;
-        fill: black;
-    }
+            .cardsocial:nth-child(7) .github {
+                opacity: 0;
+                transition: .2s ease-in-out;
+                fill: black;
+            }
 
-    .cardsocial:nth-child(8) {
-        border-radius: 0px;
-    }
+        .cardsocial:nth-child(8) {
+            border-radius: 0px;
+        }
 
-    .cardsocial:nth-child(8) .telegram {
-        opacity: 0;
-        transition: .2s ease-in-out;
-        fill: #29b6f6;
-    }
+            .cardsocial:nth-child(8) .telegram {
+                opacity: 0;
+                transition: .2s ease-in-out;
+                fill: #29b6f6;
+            }
 
-    .cardsocial:nth-child(9) {
-        border-bottom-right-radius: 10px;
-        border-top-left-radius: 0px;
-    }
+        .cardsocial:nth-child(9) {
+            border-bottom-right-radius: 10px;
+            border-top-left-radius: 0px;
+        }
 
-    .cardsocial:nth-child(9) .reddit {
-        opacity: 0;
-        transition: .2s ease-in-out;
-    }
+            .cardsocial:nth-child(9) .reddit {
+                opacity: 0;
+                transition: .2s ease-in-out;
+            }
 
     .mainsocial:hover {
         width: 14em;
         cursor: pointer;
     }
 
-    .mainsocial:hover .main_backsocial {
-        opacity: 0;
-    }
+        .mainsocial:hover .main_backsocial {
+            opacity: 0;
+        }
 
-    .mainsocial:hover .cardsocial {
-        margin: .2em;
-        border-radius: 10px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        background: rgba(255, 255, 255, 0.2);
-    }
+        .mainsocial:hover .cardsocial {
+            margin: .2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
+        }
 
-    .mainsocial:hover .cardsocial:nth-child(5) {
-        border: transparent;
-    }
+            .mainsocial:hover .cardsocial:nth-child(5) {
+                border: transparent;
+            }
 
-    .mainsocial:hover .text {
-        opacity: 0;
-        z-index: -3;
-    }
+        .mainsocial:hover .text {
+            opacity: 0;
+            z-index: -3;
+        }
 
-    .mainsocial:hover .instagram {
-        opacity: 1;
-    }
+        .mainsocial:hover .instagram {
+            opacity: 1;
+        }
 
-    .mainsocial:hover .twitter {
-        opacity: 1;
-    }
+        .mainsocial:hover .twitter {
+            opacity: 1;
+        }
 
-    .mainsocial:hover .dribble {
-        opacity: 1;
-    }
+        .mainsocial:hover .dribble {
+            opacity: 1;
+        }
 
-    .mainsocial:hover .codepen {
-        opacity: 1;
-    }
+        .mainsocial:hover .codepen {
+            opacity: 1;
+        }
 
-    .mainsocial:hover .uiverse {
-        opacity: 1;
-    }
+        .mainsocial:hover .uiverse {
+            opacity: 1;
+        }
 
-    .mainsocial:hover .discord {
-        opacity: 1;
-    }
+        .mainsocial:hover .discord {
+            opacity: 1;
+        }
 
-    .mainsocial:hover .github {
-        opacity: 1;
-    }
+        .mainsocial:hover .github {
+            opacity: 1;
+        }
 
-    .mainsocial:hover .telegram {
-        opacity: 1;
-    }
+        .mainsocial:hover .telegram {
+            opacity: 1;
+        }
 
-    .mainsocial:hover .reddit {
-        opacity: 1;
-    }
+        .mainsocial:hover .reddit {
+            opacity: 1;
+        }
 
     .cardsocial:nth-child(1):hover {
         background-color: #cc39a4;
     }
 
-    .cardsocial:nth-child(1):hover .instagram {
-        fill: white;
-    }
+        .cardsocial:nth-child(1):hover .instagram {
+            fill: white;
+        }
 
     .cardsocial:nth-child(2):hover {
         background-color: #03A9F4;
     }
 
-    .cardsocial:nth-child(2):hover .twitter {
-        fill: white;
-    }
+        .cardsocial:nth-child(2):hover .twitter {
+            fill: white;
+        }
 
     .cardsocial:nth-child(3):hover {
         background-color: #ffb5d2;
     }
 
-    .cardsocial:nth-child(3):hover .dribble {
-        fill: white;
-    }
+        .cardsocial:nth-child(3):hover .dribble {
+            fill: white;
+        }
 
     .cardsocial:nth-child(4):hover {
         background-color: #1E1F26;
     }
 
-    .cardsocial:nth-child(4):hover .codepen {
-        fill: white;
-    }
+        .cardsocial:nth-child(4):hover .codepen {
+            fill: white;
+        }
 
     .cardsocial:nth-child(5):hover {
         animation: backgroundIMG .1s;
         animation-fill-mode: forwards;
     }
 
-    .cardsocial:nth-child(5):hover .uiverse #paint0_linear_501_142 stop {
-        stop-color: white;
-    }
+        .cardsocial:nth-child(5):hover .uiverse #paint0_linear_501_142 stop {
+            stop-color: white;
+        }
 
-    .cardsocial:nth-child(5):hover .uiverse #paint1_linear_501_142 stop {
-        stop-color: white;
-    }
+        .cardsocial:nth-child(5):hover .uiverse #paint1_linear_501_142 stop {
+            stop-color: white;
+        }
 
-    .cardsocial:nth-child(5):hover .uiverse #paint2_linear_501_142 stop {
-        stop-color: white;
-    }
+        .cardsocial:nth-child(5):hover .uiverse #paint2_linear_501_142 stop {
+            stop-color: white;
+        }
 
 
 
@@ -666,43 +969,43 @@ img:hover {
         background-color: #8c9eff;
     }
 
-    .cardsocial:nth-child(6):hover .discord {
-        fill: white;
-    }
+        .cardsocial:nth-child(6):hover .discord {
+            fill: white;
+        }
 
     .cardsocial:nth-child(7):hover {
         background-color: black;
     }
 
-    .cardsocial:nth-child(7):hover .github {
-        fill: white;
-    }
+        .cardsocial:nth-child(7):hover .github {
+            fill: white;
+        }
 
     .cardsocial:nth-child(8):hover {
         background-color: #29b6f6;
     }
 
-    .cardsocial:nth-child(8):hover .telegram>path:nth-of-type(1) {
-        fill: white;
-    }
+        .cardsocial:nth-child(8):hover .telegram > path:nth-of-type(1) {
+            fill: white;
+        }
 
-    .cardsocial:nth-child(8):hover .telegram>path:nth-of-type(2) {
-        fill: #29b6f6;
-    }
+        .cardsocial:nth-child(8):hover .telegram > path:nth-of-type(2) {
+            fill: #29b6f6;
+        }
 
-    .cardsocial:nth-child(8):hover .telegram>path:nth-of-type(3) {
-        fill: #29b6f6;
-    }
+        .cardsocial:nth-child(8):hover .telegram > path:nth-of-type(3) {
+            fill: #29b6f6;
+        }
 
     .cardsocial:nth-child(9):hover {
         background-color: rgb(255, 69, 0);
     }
 
-    .cardsocial:nth-child(9) .reddit>g circle {
+    .cardsocial:nth-child(9) .reddit > g circle {
         fill: rgb(255, 69, 0);
     }
 
-    .cardsocial:nth-child(9) .reddit>g path {
+    .cardsocial:nth-child(9) .reddit > g path {
         fill: white;
     }
 
@@ -716,1210 +1019,1150 @@ img:hover {
         letter-spacing: 0.33em;
         z-index: 3;
     }
-    
+
+    /* =========================================
+       شريط التحكم العائم
+    ========================================= */
+    .floating-controls {
+        position: fixed;
+        bottom: 25px;
+        left: 25px;
+        z-index: 999999;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    body.ltr-mode .floating-controls {
+        left: auto;
+        right: 25px;
+    }
+
+    .control-btn {
+        background: rgba(33, 38, 45, 0.9);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 10px 18px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-family: 'Cairo', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    body:not(.dark-mode) .control-btn {
+        background: rgba(255, 255, 255, 0.85);
+        color: #1a1a2e;
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .control-btn:hover {
+        background: #00bfff !important;
+        color: #ffffff !important;
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 10px 25px rgba(0, 191, 255, 0.45);
+        border-color: #00bfff !important;
+    }
+
+    /* =========================================
+       تنسيقات عامة
+    ========================================= */
+    .slide .background {
+        transition: filter 0.5s ease;
+    }
+
+    .panel.top {
+        transition: background-color 0.5s ease;
+    }
+
+    /* تنسيق النصوص في الوضع الليلي */
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode h3,
+    body.dark-mode h4,
+    body.dark-mode h5,
+    body.dark-mode h6,
+    body.dark-mode p,
+    body.dark-mode span,
+    body.dark-mode li,
+    body.dark-mode a:not(.control-btn):not(.read-more-btn) {
+        color: #e6edf3;
+    }
+
+    body:not(.dark-mode) h1,
+    body:not(.dark-mode) h2,
+    body:not(.dark-mode) h3,
+    body:not(.dark-mode) h4,
+    body:not(.dark-mode) h5,
+    body:not(.dark-mode) h6,
+    body:not(.dark-mode) p,
+    body:not(.dark-mode) span,
+    body:not(.dark-mode) li,
+    body:not(.dark-mode) a:not(.control-btn):not(.read-more-btn) {
+        color: #1a1a2e;
+    }
+
+    /* زر تحميل السيرة */
+    .menu .download {
+        background-color: #00bfff !important;
+        color: #fff !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 8px 16px !important;
+        transition: all 0.3s ease;
+    }
+
+        .menu .download:hover {
+            background-color: #0099cc !important;
+            transform: scale(1.02);
+        }
+
+    body:not(.dark-mode) .menu .download {
+        background-color: #0066cc !important;
+        color: #fff !important;
+    }
+
+        body:not(.dark-mode) .menu .download:hover {
+            background-color: #0052a3 !important;
+        }
+
+    /* زر المزيد */
+    .read-more-btn {
+        font-size: 1rem;
+        font-weight: 700;
+        padding: 5px 15px;
+        border-radius: 20px;
+        background: rgba(0, 191, 255, 0.15);
+        transition: all 0.3s ease;
+    }
+
+        .read-more-btn:hover {
+            background: rgba(0, 191, 255, 0.3);
+            transform: scale(1.02);
+        }
+
+    body:not(.dark-mode) .read-more-btn {
+        background: rgba(0, 102, 204, 0.1);
+    }
+
+        body:not(.dark-mode) .read-more-btn:hover {
+            background: rgba(0, 102, 204, 0.25);
+        }
 </style>
 
-<body class="slides horizontal simplifiedMobile animated">
+<body class="slides horizontal simplifiedMobile animated dark-mode">
 
-    <!-- SVG Library -->
+    <!-- =========================================
+       أزرار التحكم العائمة
+    ========================================= -->
+    <div class="floating-controls">
+        <button id="themeToggleBtn" class="control-btn" title="تبديل الوضع الليلي/النهاري">
+            <span id="themeIcon">🌙</span>
+            <span id="themeLabel" data-ar="الوضع الليلي" data-en="Dark Mode">الوضع الليلي</span>
+        </button>
+        <button id="langToggleBtn" class="control-btn" title="Switch Language">
+            <span>🌐</span>
+            <span id="langLabel" data-ar="English" data-en="عربي">English</span>
+        </button>
+    </div>
+
+    <!-- =========================================
+       SVG Library
+    ========================================= -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-
-        <symbol id="logo" viewBox="0 0 106 31">
-            <title>Slides Framework</title>
-            <path
-                d="M17.413 14.04c-.56-5.84-5.6-7-8.52-7-4.6 0-8.6 2.92-8.6 7.52 0 3 2.4 4.88 5.28 5.8 4.24 1.64 5.88 1.84 5.88 3.36 0 1.08-1.2 1.72-2.32 1.72-.28 0-2.24 0-2.52-2.04h-6.6c.6 5.84 5.68 7.36 9.04 7.36 4.92 0 9.04-2.88 9.04-7.76 0-4.8-4-5.92-7.76-6.96-1.76-.52-3.4-1.2-3.4-2.2 0-.6.48-1.48 1.88-1.48 1.96 0 2.04 1.2 2.08 1.68h6.52zm2.222 15.96h6.64v-29.6h-6.64v29.6zm9.662-24.56h6.64v-5.04h-6.64v5.04zm0 24.56h6.64v-22.2h-6.64v22.2zm32.782-29.6h-6.64v9.28c-.72-.72-2.6-2.64-6.52-2.64-5.64 0-11 4.28-11 11.8 0 6.68 4.4 11.88 11.12 11.88 4.48 0 6.08-2.2 6.72-3.12v2.4h6.32v-29.6zm-17.52 18.4c0-2.56 1.8-5.56 5.64-5.56 1.56 0 2.96.56 3.96 1.56 1 .96 1.64 2.32 1.64 3.92.08 1.64-.52 3.08-1.56 4.12s-2.52 1.68-4.12 1.68c-3.12 0-5.56-2.28-5.56-5.68v-.04zm42.502 2.4c.52-4.08-.32-7.64-3.12-10.64-2.08-2.2-5-3.52-8.4-3.52-6.76 0-11.64 5.72-11.64 11.92 0 6.6 5.4 11.76 11.76 11.76 2.28 0 4.48-.68 6.32-2 1.88-1.28 3.44-3.2 4.52-5.68h-6.8c-.8 1.16-1.92 2.08-4.04 2.08-2.6 0-4.84-1.56-5.12-3.92h16.52zm-16.44-5.04c.16-1.04 1.52-3.52 4.96-3.52s4.8 2.48 4.96 3.52h-9.92zm34.502-2.12c-.56-5.84-5.6-7-8.52-7-4.6 0-8.6 2.92-8.6 7.52 0 3 2.4 4.88 5.28 5.8 4.24 1.64 5.88 1.84 5.88 3.36 0 1.08-1.2 1.72-2.32 1.72-.28 0-2.24 0-2.52-2.04h-6.6c.6 5.84 5.68 7.36 9.04 7.36 4.92 0 9.04-2.88 9.04-7.76 0-4.8-4-5.92-7.76-6.96-1.76-.52-3.4-1.2-3.4-2.2 0-.6.48-1.48 1.88-1.48 1.96 0 2.04 1.2 2.08 1.68h6.52z" />
-        </symbol>
-
-        <symbol id="logo-icon" viewBox="0 0 50 41">
-            <title>Slides Framework</title>
-            <path d="M4,12h42c2.2,0,4,1.8,4,4v21c0,2.2-1.8,4-4,4H4c-2.2,0-4-1.8-4-4V16C0,13.8,1.8,12,4,12z" />
-            <path opacity="0.6"
-                d="M45.5,9h-41C3.7,9,3,8.3,3,7.5v0C3,6.7,3.7,6,4.5,6h41C46.3,6,47,6.7,47,7.5v0C47,8.3,46.3,9,45.5,9z" />
-            <path opacity="0.4"
-                d="M7.5,0h35C43.3,0,44,0.7,44,1.5v0C44,2.3,43.3,3,42.5,3h-35C6.7,3,6,2.3,6,1.5v0C6,0.7,6.7,0,7.5,0z" />
-        </symbol>
-
         <symbol id="close" viewBox="0 0 30 30">
-            <path
-                d="M15 0c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15-6.7-15-15-15zm5.7 19.3c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3s-.5-.1-.7-.3l-4.3-4.3-4.3 4.3c-.2.2-.4.3-.7.3s-.5-.1-.7-.3c-.4-.4-.4-1 0-1.4l4.3-4.3-4.3-4.3c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l4.3 4.3 4.3-4.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-4.3 4.3 4.3 4.3z" />
+            <path d="M15 0c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15-6.7-15-15-15zm5.7 19.3c.4.4.4 1 0 1.4-.2.2-.4.3-.7.3s-.5-.1-.7-.3l-4.3-4.3-4.3 4.3c-.2.2-.4.3-.7.3s-.5-.1-.7-.3c-.4-.4-.4-1 0-1.4l4.3-4.3-4.3-4.3c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l4.3 4.3 4.3-4.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-4.3 4.3 4.3 4.3z" />
         </symbol>
-
-        <symbol id="close-small" viewBox="0 0 11 11">
-            <path
-                d="M6.914 5.5l3.793-3.793c.391-.391.391-1.023 0-1.414s-1.023-.391-1.414 0l-3.793 3.793-3.793-3.793c-.391-.391-1.023-.391-1.414 0s-.391 1.023 0 1.414l3.793 3.793-3.793 3.793c-.391.391-.391 1.023 0 1.414.195.195.451.293.707.293s.512-.098.707-.293l3.793-3.793 3.793 3.793c.195.195.451.293.707.293s.512-.098.707-.293c.391-.391.391-1.023 0-1.414l-3.793-3.793z" />
-        </symbol>
-
-        <symbol id="arrow-left" viewBox="0 0 29 56">
-            <path
-                d="M28.7.3c.4.4.4 1 0 1.4l-26.3 26.3 26.3 26.3c.4.4.4 1 0 1.4-.4.4-1 .4-1.4 0l-27-27c-.4-.4-.4-1 0-1.4l27-27c.3-.3 1-.4 1.4 0z" />
-        </symbol>
-
-        <symbol id="arrow-right" viewBox="0 0 29 56">
-            <path
-                d="M.3 55.7c-.4-.4-.4-1 0-1.4l26.3-26.3-26.3-26.3c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0l27 27c.4.4.4 1 0 1.4l-27 27c-.3.3-1 .4-1.4 0z" />
-        </symbol>
-
-        <symbol id="back" viewBox="0 0 20 20">
-            <path
-                d="M2.3 10.7l5 5c.4.4 1 .4 1.4 0s.4-1 0-1.4l-3.3-3.3h11.6c.6 0 1-.4 1-1s-.4-1-1-1h-11.6l3.3-3.3c.4-.4.4-1 0-1.4-.2-.2-.4-.3-.7-.3s-.5.1-.7.3l-5 5c-.2.2-.3.5-.3.7 0 .2.1.5.3.7z" />
-        </symbol>
-
         <symbol id="menu" viewBox="0 0 18 18">
-            <path
-                d="M16 5h-14c-.6 0-1-.4-1-1 0-.5.4-1 1-1h14c.5 0 1 .4 1 1s-.4 1-1 1zm-14 5h14c.5 0 1-.4 1-1 0-.5-.4-1-1-1h-14c-.6 0-1 .4-1 1s.4 1 1 1zm14 3h-14c-.5 0-1 .4-1 1 0 .5.4 1 1 1h14c.5 0 1-.4 1-1s-.4-1-1-1z" />
+            <path d="M16 5h-14c-.6 0-1-.4-1-1 0-.5.4-1 1-1h14c.5 0 1 .4 1 1s-.4 1-1 1zm-14 5h14c.5 0 1-.4 1-1 0-.5-.4-1-1-1h-14c-.6 0-1 .4-1 1s.4 1 1 1zm14 3h-14c-.5 0-1 .4-1 1 0 .5.4 1 1 1h14c.5 0 1-.4 1-1s-.4-1-1-1z" />
         </symbol>
-
         <symbol id="share" viewBox="0 0 18 18">
-            <path
-                d="M16 8c-.6 0-1 .4-1 1v6h-12v-6c0-.6-.4-1-1-1s-1 .4-1 1v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-.6-.4-1-1-1zm-2.3-2.3c.4-.4.4-1 0-1.4l-4-4c-.4-.4-1-.4-1.4 0l-4 4c-.4.4-.4 1 0 1.4s1 .4 1.4 0l2.3-2.3v7.6c0 .6.4 1 1 1s1-.4 1-1v-7.6l2.3 2.3c.4.4 1 .4 1.4 0z" />
+            <path d="M16 8c-.6 0-1 .4-1 1v6h-12v-6c0-.6-.4-1-1-1s-1 .4-1 1v6c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-6c0-.6-.4-1-1-1zm-2.3-2.3c.4-.4.4-1 0-1.4l-4-4c-.4-.4-1-.4-1.4 0l-4 4c-.4.4-.4 1 0 1.4s1 .4 1.4 0l2.3-2.3v7.6c0 .6.4 1 1 1s1-.4 1-1v-7.6l2.3 2.3c.4.4 1 .4 1.4 0z" />
         </symbol>
-
         <symbol id="arrow-down" viewBox="0 0 24 24">
-            <path
-                d="M12 18c-.2 0-.5-.1-.7-.3l-11-10c-.4-.4-.4-1-.1-1.4.4-.4 1-.4 1.4-.1l10.4 9.4 10.3-9.4c.4-.4 1-.3 1.4.1.4.4.3 1-.1 1.4l-11 10c-.1.2-.4.3-.6.3z" />
+            <path d="M12 18c-.2 0-.5-.1-.7-.3l-11-10c-.4-.4-.4-1-.1-1.4.4-.4 1-.4 1.4-.1l10.4 9.4 10.3-9.4c.4-.4 1-.3 1.4.1.4.4.3 1-.1 1.4l-11 10c-.1.2-.4.3-.6.3z" />
         </symbol>
-
-        <symbol id="arrow-up" viewBox="0 0 24 24">
-            <path
-                d="M11.9 5.9c.2 0 .5.1.7.3l11 10c.4.4.4 1 .1 1.4-.4.4-1 .4-1.4.1l-10.4-9.4-10.3 9.4c-.4.4-1 .3-1.4-.1-.4-.4-.3-1 .1-1.4l11-10c.1-.2.4-.3.6-.3z" />
-        </symbol>
-
-        <symbol id="arrow-top" viewBox="0 0 18 18">
-            <path
-                d="M15.7 7.3l-6-6c-.4-.4-1-.4-1.4 0l-6 6c-.4.4-.4 1 0 1.4.4.4 1 .4 1.4 0l4.3-4.3v11.6c0 .6.4 1 1 1s1-.4 1-1v-11.6l4.3 4.3c.2.2.4.3.7.3s.5-.1.7-.3c.4-.4.4-1 0-1.4z" />
-        </symbol>
-
-        <symbol id="play" viewBox="0 0 30 30">
-            <path d="M7 30v-30l22 15z" />
-        </symbol>
-
-        <symbol id="chat" viewBox="0 0 18 18">
-            <path
-                d="M5,17c-0.2,0-0.3,0-0.4-0.1C4.2,16.7,4,16.4,4,16v-2H2c-1.1,0-2-0.9-2-2V3c0-1.1,0.9-2,2-2h14c1.1,0,2,0.9,2,2v9 c0,1.1-0.9,2-2,2H9.3l-3.7,2.8C5.4,16.9,5.2,17,5,17z M2,12h3.5C5.8,12,6,12.2,6,12.5V14l2.4-1.8C8.6,12.1,8.8,12,9,12h7V3H2V12z M13,7H5C4.4,7,4,6.6,4,6s0.4-1,1-1h8c0.6,0,1,0.4,1,1S13.6,7,13,7z M13,10H5c-0.6,0-1-0.4-1-1s0.4-1,1-1h8c0.6,0,1,0.4,1,1 S13.6,10,13,10z" />
-        </symbol>
-
-        <symbol id="mail" viewBox="0 0 18 18">
-            <path
-                d="M16 2h-14c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2zm0 2v.5l-7 4.3-7-4.4v-.4h14zm-14 10v-7.2l6.5 4c.1.1.3.2.5.2s.4-.1.5-.2l6.5-4v7.2h-14z" />
-        </symbol>
-
-        <symbol id="sound-on" viewBox="0 0 18 18">
-            <path
-                d="M8.5,0.1C8.1-0.1,7.7,0,7.4,0.2L3.7,3H2C0.9,3,0,3.9,0,5v6c0,1.1,0.9,2,2,2h1.7l3.7,2.8C7.6,15.9,7.8,16,8,16 c0.2,0,0.3,0,0.4-0.1C8.8,15.7,9,15.4,9,15V1C9,0.6,8.8,0.3,8.5,0.1z M7,13l-2.4-1.8C4.4,11.1,4.2,11,4,11l-2,0l0-6h2 c0.2,0,0.4-0.1,0.6-0.2L7,3V13z M11.7,9.9l0.7,1.9C13.9,11.2,15,9.7,15,8c0-1.7-1.1-3.2-2.7-3.8l-0.7,1.9C12.5,6.4,13,7.2,13,8C13,8.9,12.5,9.6,11.7,9.9z M12.2,1.1l-0.3,2C14.3,3.5,16,5.6,16,8s-1.8,4.5-4.2,4.9l0.3,2C15.6,14.3,18,11.4,18,8C18,4.6,15.6,1.7,12.2,1.1z" />
-        </symbol>
-
-        <symbol id="sound-off" viewBox="0 0 18 18">
-            <path
-                d="M15.9,8l1.8-1.8c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0l-1.8,1.8l-1.8-1.8c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4L13.1,8l-1.8,1.8 c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.8-1.8l1.8,1.8c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L15.9,8z M8.5,0.1C8.1-0.1,7.7,0,7.4,0.2L3.7,3H2C0.9,3,0,3.9,0,5v6c0,1.1,0.9,2,2,2h1.7l3.7,2.8C7.6,15.9,7.8,16,8,16 c0.2,0,0.3,0,0.4-0.1C8.8,15.7,9,15.4,9,15V1C9,0.6,8.8,0.3,8.5,0.1z M7,13l-2.4-1.8C4.4,11.1,4.2,11,4,11l-2,0l0-6h2 c0.2,0,0.4-0.1,0.6-0.2L7,3V13z" />
-        </symbol>
-
-        <!-- social -->
-        <symbol id="apple" viewBox="-1 1 24 24">
-            <path
-                d="M17.6 13.8c0-3 2.5-4.5 2.6-4.6-1.4-2.1-3.6-2.3-4.4-2.4-1.9-.2-3.6 1.1-4.6 1.1-.9 0-2.4-1.1-4-1-2 0-3.9 1.2-5 3-2.1 3.7-.5 9.1 1.5 12.1 1 1.5 2.2 3.1 3.8 3 1.5-.1 2.1-1 3.9-1s2.4 1 4 1 2.7-1.5 3.7-2.9c1.2-1.7 1.6-3.3 1.7-3.4-.1-.1-3.2-1.3-3.2-4.9zm-3.1-9c.8-1 1.4-2.4 1.2-3.8-1.2 0-2.7.8-3.5 1.8-.8.9-1.5 2.3-1.3 3.7 1.4.1 2.8-.7 3.6-1.7z" />
-        </symbol>
-
-        <symbol id="dribbble" viewBox="0 0 24 24">
-            <path
-                d="M12 0c-6.7 0-12 5.3-12 12s5.3 12 12 12 12-5.3 12-12-5.3-12-12-12zm7.9 5.7c1.3 1.7 2.1 3.9 2.3 6.1-.4-.1-2.4-.4-4.7-.4-.8 0-1.5 0-2.3.1 0-.1-.1-.3-.3-.5l-.7-1.5c3.7-1.4 5.3-3.4 5.7-3.8zm-7.9-3.8c2.5 0 4.9.9 6.7 2.5-.3.4-1.9 2.3-5.2 3.6-1.6-2.9-3.3-5.3-3.7-5.9.6-.1 1.4-.2 2.2-.2zm-4.4 1c.4.6 2.1 3 3.7 5.8-4.4 1.2-8.2 1.2-9.2 1.2h-.1c.8-3.1 2.9-5.6 5.6-7zm-5.7 9.1v-.3h.3c1.2 0 5.6-.1 10.1-1.5l.8 1.6c-.1 0-.3 0-.4.1-5.1 1.6-7.9 6-8.3 6.7-1.6-1.7-2.5-4.1-2.5-6.6zm10.1 10.1c-2.3 0-4.4-.8-6.1-2.1.3-.5 2.4-4.4 7.9-6.3 1.3 3.6 2 6.7 2.1 7.6-1.2.6-2.6.8-3.9.8zm5.7-1.8c-.1-.8-.7-3.6-2-7.1.7-.1 1.3-.1 2-.1 2.1 0 3.7.4 4.1.5-.3 2.8-1.8 5.2-4.1 6.7z" />
-        </symbol>
-
-        <symbol id="facebook" viewBox="0 0 24 24">
-            <path
-                d="M24 1.3v21.3c0 .7-.6 1.3-1.3 1.3h-6.1v-9.3h3.1l.5-3.6h-3.6v-2.2c0-1.1.3-1.8 1.8-1.8h1.9v-3.2c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8v2.7h-3.1v3.6h3.1v9.2h-11.5c-.7 0-1.3-.6-1.3-1.3v-21.4c0-.7.6-1.3 1.3-1.3h21.3c.8 0 1.4.6 1.4 1.3z" />
-        </symbol>
-
-        <symbol id="facebook2" viewBox="0 0 512 512">
-            <path
-                d="M288 176v-64c0-17.664 14.336-32 32-32h32v-80h-64c-53.024 0-96 42.976-96 96v80h-64v80h64v256h96v-256h64l32-80h-96z" />
-        </symbol>
-
-        <symbol id="fb-like" viewBox="0 0 20 20">
-            <path
-                d="M0 8v12h5v-12h-5zm2.5 10.8c-.4 0-.8-.3-.8-.8 0-.4.3-.8.8-.8s.8.3.8.8c0 .4-.4.8-.8.8zm3.5-.8h9.5c1.1 0 1.7-1 1.7-1.7 0-.3-.4-1-.4-1 1.4-.3 1.7-1.2 1.7-1.7-.1-.5-.3-.9-.5-1 1-.4 1.5-1.1 1.4-1.9-.1-.8-1-1.5-1-1.5 1-.6.9-1.5.9-1.5-.3-1.3-1.5-1.7-1.7-1.7h-5.6s.3-.5.3-2.4-1.3-3.6-2.6-3.6c0 0-.7.1-1 .3v3.5l-2.7 4.4v9.8z" />
-        </symbol>
-
-        <symbol id="googlePlus" viewBox="0 1 24 24">
-            <path
-                d="M7.8 13.5h4.6c-.6 2-2.5 3.4-4.6 3.4-2.7 0-4.9-2.2-4.9-4.9s2.2-4.9 4.9-4.9c1.1 0 2.1.3 3 1l1.8-2.4c-1.4-1.1-3-1.6-4.8-1.6-4.3 0-7.9 3.5-7.9 7.9s3.5 7.9 7.9 7.9 7.9-3.5 7.9-7.9v-1.5h-7.9v3zM21.7 11v-2.2h-2v2.2h-2.2v2h2.2v2.2h2v-2.2h2.2v-2z" />
-        </symbol>
-
-        <symbol id="instagram" viewBox="0 0 20 20">
-            <circle cx="10" cy="10" r="3.3" />
-            <path
-                d="M13,0H7C2.2,0,0,2.2,0,7v6c0,4.8,2.1,7,7,7h6c4.8,0,7-2.2,7-7V7C20,2.2,17.9,0,13,0z M10,15.1c-2.8,0-5.1-2.3-5.1-5.1 S7.2,4.9,10,4.9s5.1,2.3,5.1,5.1S12.8,15.1,10,15.1z M15.3,5.9c-0.7,0-1.2-0.5-1.2-1.2c0-0.7,0.5-1.2,1.2-1.2s1.2,0.5,1.2,1.2 C16.5,5.3,16,5.9,15.3,5.9z" />
-        </symbol>
-
-        <symbol id="behance" viewBox="0 0 511.958 511.958">
-            <path
-                d="M210.624 240.619c10.624-5.344 18.656-11.296 24.16-17.728 9.792-11.584 14.624-26.944 14.624-45.984 0-18.528-4.832-34.368-14.496-47.648-16.128-21.632-43.424-32.704-82.016-33.28h-152.896v312.096h142.56c16.064 0 30.944-1.376 44.704-4.192 13.76-2.848 25.664-8.064 35.744-15.68 8.96-6.624 16.448-14.848 22.4-24.544 9.408-14.656 14.112-31.264 14.112-49.76 0-17.92-4.128-33.184-12.32-45.728-8.288-12.544-20.448-21.728-36.576-27.552zm-147.552-90.432h68.864c15.136 0 27.616 1.632 37.408 4.864 11.328 4.704 16.992 14.272 16.992 28.864 0 13.088-4.32 22.24-12.864 27.392-8.608 5.152-19.776 7.744-33.472 7.744h-76.928v-68.864zm108.896 198.24c-7.616 3.68-18.336 5.504-32.064 5.504h-76.832v-83.232h77.888c13.568.096 24.128 1.888 31.68 5.248 13.44 6.08 20.128 17.216 20.128 33.504 0 19.2-6.912 32.128-20.8 38.976zM327.168 110.539h135.584v38.848h-135.584zM509.856 263.851c-2.816-18.08-9.024-33.984-18.688-47.712-10.592-15.552-24.032-26.944-40.384-34.144-16.288-7.232-34.624-10.848-55.04-10.816-34.272 0-62.112 10.72-83.648 32-21.472 21.344-32.224 52.032-32.224 92.032 0 42.656 11.872 73.472 35.744 92.384 23.776 18.944 51.232 28.384 82.4 28.384 37.728 0 67.072-11.232 88.032-33.632 13.408-14.144 20.992-28.064 22.656-41.728h-62.464c-3.616 6.752-7.808 12.032-12.608 15.872-8.704 7.04-20.032 10.56-33.92 10.56-13.216 0-24.416-2.912-33.76-8.704-15.424-9.28-23.488-25.536-24.512-48.672h170.464c.256-19.936-.384-35.264-2.048-45.824zm-166.88 5.984c2.24-15.008 7.68-26.912 16.32-35.712 8.64-8.768 20.864-13.184 36.512-13.216 14.432 0 26.496 4.128 36.32 12.416 9.696 8.352 15.168 20.48 16.288 36.512h-105.44z" />
-        </symbol>
-
-        <symbol id="linkedin" viewBox="0 0 24 24">
-            <path
-                d="M5.9 21.9h-4.7v-14.2h4.7v14.2zm-2.3-16.1c-1.6 0-2.6-1.1-2.6-2.5s1-2.5 2.7-2.5c1.6 0 2.6 1 2.6 2.5-.1 1.4-1.2 2.5-2.7 2.5zm19.2 16.1h-4.7v-7.6c0-2-.7-3.3-2.3-3.3-1.3 0-2.1.9-2.5 1.7-.1.3-.1.8-.1 1.2v7.9h-4.7v-14.1h4.7v2c.7-.9 1.7-2.3 4.3-2.3 3.1 0 5.5 2.1 5.5 6.4v8.2h-.2z" />
-        </symbol>
-
-        <symbol id="medium" viewBox="0 0 130.8 104">
-            <path
-                d="M15.5 21.2c.2-1.6-.5-3.2-1.7-4.3l-12.1-14.7v-2.2h38l29.3 64.4 25.8-64.4h36.2v2.2l-10.5 10c-.9.7-1.3 1.8-1.2 2.9v73.7c0 1.1.3 2.2 1.2 2.9l10.2 10v2.2h-51.3v-2.2l10.6-10.2c1-1 1-1.3 1-2.9v-59.6l-29.4 74.7h-4l-34.2-74.7v50.3c0 2.2.4 4.2 1.9 5.7l13.7 16.8v2.2h-39v-2.2l13.8-16.7c1.5-1.5 1.8-3.3 1.8-5.7l-.1-58.2z" />
-        </symbol>
-
-        <symbol id="pinterest" viewBox="0 0 24 24">
-            <path
-                d="M5.9 13.9c1.2-2-.4-2.5-.6-4-1-6.1 7.1-10.2 11.4-6 2.9 2.9 1 12-3.7 11-4.6-.9 2.2-8.1-1.4-9.5-3-1.1-4.6 3.6-3.2 5.9-.8 4-2.5 7.7-1.8 12.7 2.3-1.7 3.1-4.8 3.7-8.1 1.2.7 1.8 1.4 3.3 1.5 5.5.4 8.6-5.4 7.8-10.7-.7-4.7-5.5-7.1-10.6-6.6-4.1.4-8.1 3.7-8.3 8.3-.1 2.8.7 4.9 3.4 5.5z" />
-        </symbol>
-
-        <symbol id="stumbleupon" viewBox="0 0 24 24">
-            <path
-                d="M13.3 9.6l1.6.8 2.5-.8v-1.4c0-3-2.4-5.4-5.4-5.4s-5.4 2.4-5.4 5.4v7.5c0 .7-.6 1.3-1.3 1.3s-1.3-.6-1.3-1.3v-3.2h-4v3.2c0 3 2.4 5.4 5.4 5.4s5.4-2.4 5.4-5.4v-7.5c0-.7.6-1.3 1.3-1.3s1.3.6 1.3 1.3l-.1 1.4zm6.6 2.9v3.2c0 .7-.6 1.3-1.3 1.3s-1.3-.6-1.3-1.3v-3.2l-2.5.8-1.6-.8v3.2c0 3 2.4 5.4 5.4 5.4s5.4-2.4 5.4-5.4v-3.2h-4.1z" />
-        </symbol>
-
-        <symbol id="twitter" viewBox="0 1 24 23">
-            <path
-                d="M21.5 7.6v.6c0 6.6-5 14.1-14 14.1-2.8 0-5.4-.8-7.6-2.2l1.2.1c2.3 0 4.4-.8 6.1-2.1-2.2 0-4-1.5-4.6-3.4.3.1.6.1.9.1.5 0 .9-.1 1.3-.2-2.1-.6-3.8-2.6-3.8-5 .7.4 1.4.6 2.2.6-1.3-.9-2.2-2.4-2.2-4.1 0-.9.2-1.8.7-2.5 2.4 3 6.1 5 10.2 5.2-.1-.4-.1-.7-.1-1.1 0-2.7 2.2-5 4.9-5 1.4 0 2.7.6 3.6 1.6 1-.3 2.1-.7 3-1.3-.4 1.2-1.1 2.1-2.2 2.7 1-.1 1.9-.4 2.8-.8-.6 1.1-1.4 2-2.4 2.7z" />
-        </symbol>
-
-        <symbol id="tumblr" viewBox="0 0 23 23">
-            <path
-                d="M12.573 4.94v-4.94h-3.188c-.072.183-.11.4-.11.622-.034.107-.072.184-.072.293-.328 1.829-1.28 3.11-2.892 3.807-.476.218-.914.253-1.39.218v3.987h2.342c.039 5.603.039 8.493.039 8.64v.332c.294 2.449 1.573 3.914 3.843 4.463.914.257 1.901.366 2.892.366 1.279-.036 2.525-.256 3.771-.659v-4.685c-.731.22-1.395.402-1.977.583-1.135.333-2.087.113-2.857-.619-.073-.11-.183-.257-.221-.403-.106-.586-.178-1.206-.178-1.795v-6.222h5.083v-3.988h-5.085z" />
-        </symbol>
-
-        <symbol id="xing" viewBox="0 0 24 24">
-            <path
-                d="M3.647 4.74c-.208 0-.384.073-.472.216-.091.148-.077.338.02.531l2.34 4.051v.02l-3.678 6.49c-.096.191-.091.383 0 .531.088.142.244.236.452.236h3.461c.518 0 .767-.349.944-.669l3.737-6.608-2.38-4.15c-.172-.307-.433-.649-.964-.649h-3.46zm14.542-4.74c-.517 0-.741.326-.927.659l-7.702 13.658 4.918 9.023c.172.307.437.659.967.659h3.457c.208 0 .371-.079.459-.221.092-.148.09-.343-.007-.535l-4.88-8.915v-.023l7.664-13.551c.096-.191.098-.386.007-.534-.088-.142-.252-.221-.46-.221h-3.496z" />
-        </symbol>
-
-        <symbol id="whatsapp" viewBox="0 0 512 512">
-            <path
-                d="M256.064 0h-.128c-141.152 0-255.936 114.816-255.936 256 0 56 18.048 107.904 48.736 150.048l-31.904 95.104 98.4-31.456c40.48 26.816 88.768 42.304 140.832 42.304 141.152 0 255.936-114.848 255.936-256s-114.784-256-255.936-256zm148.96 361.504c-6.176 17.44-30.688 31.904-50.24 36.128-13.376 2.848-30.848 5.12-89.664-19.264-75.232-31.168-123.68-107.616-127.456-112.576-3.616-4.96-30.4-40.48-30.4-77.216s18.656-54.624 26.176-62.304c6.176-6.304 16.384-9.184 26.176-9.184 3.168 0 6.016.16 8.576.288 7.52.32 11.296.768 16.256 12.64 6.176 14.88 21.216 51.616 23.008 55.392 1.824 3.776 3.648 8.896 1.088 13.856-2.4 5.12-4.512 7.392-8.288 11.744-3.776 4.352-7.36 7.68-11.136 12.352-3.456 4.064-7.36 8.416-3.008 15.936 4.352 7.36 19.392 31.904 41.536 51.616 28.576 25.44 51.744 33.568 60.032 37.024 6.176 2.56 13.536 1.952 18.048-2.848 5.728-6.176 12.8-16.416 20-26.496 5.12-7.232 11.584-8.128 18.368-5.568 6.912 2.4 43.488 20.48 51.008 24.224 7.52 3.776 12.48 5.568 14.304 8.736 1.792 3.168 1.792 18.048-4.384 35.52z" />
-        </symbol>
-
-        <symbol id="youtube" viewBox="0 0 24 24">
-            <path
-                d="M23.6 6.3c-.3-1.2-1.4-2.2-2.6-2.3-3-.3-6-.3-9-.3s-6 0-9 .3c-1.2.1-2.3 1.1-2.6 2.3-.4 1.8-.4 3.8-.4 5.7 0 1.9 0 3.9.4 5.7.3 1.2 1.4 2.2 2.6 2.3 3 .3 6 .3 9 .3s6 0 9-.3c1.3-.1 2.3-1.1 2.6-2.4.4-1.7.4-3.7.4-5.6 0-1.9 0-3.9-.4-5.7zm-14.1 9v-6.6l6.5 3.3-6.5 3.3z" />
-        </symbol>
-
     </svg>
 
-    <!-- Panel Top #05 -->
+    <!-- =========================================
+       الشريط العلوي
+    ========================================= -->
     <nav class="panel top">
         <div class="sections desktop">
-                          <a href="#" class="left">
-                          <img src="assets/img/logoo.png" alt="logo" width="100" height="80">
-                      </a>
-      
-          <div class="center">
-            <ul class="menu" style="font-family: 'Cairo', sans-serif;">
-                <li><a href="#download">تواصل معانا</a></li>
-                <li><a href="#Tools">المهارات</a></li>
-                <li><a href="#case">المشاريع</a></li>
-                <li><a href="#features">الخبرات</a></li>
-                <li><a href="#videos">الدورات والكورسات</a></li>
-                <li><a href="#">عن مهند</a></li>
-                  <!-- قائمة منفصلة لتحميل السيرة الذاتية -->
-                <li><a href="assets/cv-arabic.pdf" class="download" download style="text-decoration: none; padding: 10px; display: block; border: 1px solid #ccc; border-radius: 5px; background-color: black;">تحميل السيرة الذاتية (عربي)</a></li>
-                <li><a href="assets/cv-english.pdf"class="download" download style="text-decoration: none; padding: 10px; display: block; border: 1px solid #ccc; border-radius: 5px; background-color: black;">Download CV (English)</a></li>
-            </ul>
-            
-          
-            
-          </div>
+            <a href="#" class="left">
+                <img src="assets/img/logoo.png" alt="logo" width="100" height="80">
+            </a>
+
+            <div class="center">
+                <ul class="menu" style="font-family: 'Cairo', sans-serif;">
+                    <li><a href="#download" data-ar="تواصل معانا" data-en="Contact Us">تواصل معانا</a></li>
+                    <li><a href="#Tools" data-ar="المهارات" data-en="Skills">المهارات</a></li>
+                    <li><a href="#case" data-ar="المشاريع" data-en="Projects">المشاريع</a></li>
+                    <li><a href="#features" data-ar="الخبرات" data-en="Experiences">الخبرات</a></li>
+                    <li><a href="#videos" data-ar="الدورات والكورسات" data-en="Courses">الدورات والكورسات</a></li>
+                    <li><a href="#" data-ar="عن مهند" data-en="About Muhanad">عن مهند</a></li>
+                    <li><a href="assets/cv-arabic.pdf" class="download" download style="text-decoration: none; padding: 10px; display: block; border-radius: 5px;" data-ar="تحميل السيرة الذاتية (عربي)" data-en="Download CV (Arabic)">تحميل السيرة الذاتية (عربي)</a></li>
+                    <li><a href="assets/cv-english.pdf" class="download" download style="text-decoration: none; padding: 10px; display: block; border-radius: 5px;" data-ar="Download CV (English)" data-en="Download CV (English)">Download CV (English)</a></li>
+                </ul>
+            </div>
         </div>
         <div class="sections compact hidden">
-                          <a href="#" class="left">
-                          <img src="assets/img/logoo.png" alt="logo" width="70" height="70">
-                      </a>
-          <div class="right"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span</div>
+            <a href="#" class="left">
+                <img src="assets/img/logoo.png" alt="logo" width="70" height="70">
+            </a>
+            <div class="right"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use></svg></span></div>
         </div>
-      </nav>
+    </nav>
 
-    
-    <!-- Sidebar -->
+    <!-- =========================================
+       القائمة الجانبية
+    ========================================= -->
     <nav class="sidebar" data-sidebar-id="1">
-        <div class="close"><svg>
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
-            </svg></div>
+        <div class="close"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use></svg></div>
         <div class="content">
             <a href="#" class="header-logo">
                 <img src="assets/img/logoo.png" alt="logo" width="100" height="80">
             </a>
             <ul class="mainMenu margin-top-3" style="font-family: 'Cairo', sans-serif;">
-                <li><a href="#">عن مهند</a></li>
-                <li><a href="#videos">الدورات والكورسات</a></li>
-                <li><a href="#features">الخبرات</a></li>
-                <li><a href="#case">المشاريع</a></li>
-                <li><a href="#Tools">المهارات</a></li>
-                <li><a href="#download">تواصل معانا</a></li>
-                <li><a href="assets/cv-arabic.pdf" class="download" download style="text-decoration: none; padding: 10px; display: block; border: 1px solid #ccc; border-radius: 5px; background-color: black;">تحميل السيرة الذاتية (عربي)</a></li>
+                <li><a href="#" data-ar="عن مهند" data-en="About Muhanad">عن مهند</a></li>
+                <li><a href="#videos" data-ar="الدورات والكورسات" data-en="Courses">الدورات والكورسات</a></li>
+                <li><a href="#features" data-ar="الخبرات" data-en="Experiences">الخبرات</a></li>
+                <li><a href="#case" data-ar="المشاريع" data-en="Projects">المشاريع</a></li>
+                <li><a href="#Tools" data-ar="المهارات" data-en="Skills">المهارات</a></li>
+                <li><a href="#download" data-ar="تواصل معانا" data-en="Contact Us">تواصل معانا</a></li>
+                <li><a href="assets/cv-arabic.pdf" class="download" download style="text-decoration: none; padding: 10px; display: block; border-radius: 5px; background-color: #00bfff; color: #fff !important; text-align: center;" data-ar="تحميل السيرة الذاتية (عربي)" data-en="Download CV (Arabic)">تحميل السيرة الذاتية (عربي)</a></li>
                 <br>
-                <li><a href="assets/cv-english.pdf"class="download" download style="text-decoration: none; padding: 10px; display: block; border: 1px solid #ccc; border-radius: 5px; background-color: black;">Download CV (English)</a></li>
+                <li><a href="assets/cv-english.pdf" class="download" download style="text-decoration: none; padding: 10px; display: block; border-radius: 5px; background-color: #00bfff; color: #fff !important; text-align: center;" data-ar="Download CV (English)" data-en="Download CV (English)">Download CV (English)</a></li>
             </ul>
         </div>
     </nav>
 
-
-    <section class="slide fade-6 kenBurns">
+    <!-- =========================================
+       SLIDE 1 - الرئيسية
+    ========================================= -->
+    <section class="slide  kenBurns">
         <div class="content">
             <div class="container">
                 <div class="wrap">
                     <div class="fix-12-12">
                         <ul class="flex fixedSpaces verticalCenter reverse">
-
                             <li class="col-6-12 left middle">
-                                <h1 style="font-family: 'Cairo', sans-serif; text-align:center;"
-                                    class="ae-1 fromLeft">
+                                <h1 style="font-family: 'Cairo', sans-serif; text-align:center;" class="ae-1 fromLeft" data-ar="مبرمج ومصمم جرافيك" data-en="Programmer & Graphic Designer">
                                     مبرمج ومصمم جرافيك
                                 </h1>
 
-                                <p class="ae-2 fromLeft"
-                                   style="font-family: 'Cairo', sans-serif;
-                          direction: rtl;
-                          text-align: justify;
-                          text-justify: inter-word;
-                          line-height: 1.9;
-                          color: rgba(255,255,255,0.8);">
-
-                                    <span>
-                                        مبرمج متخصص في تطوير مواقع الويب وتطبيقات سطح المكتب بخبرة تمتد لأكثر من 8 سنوات.
-                                        أمتلك مهارات عالية في استخدام تقنيات الويب الحديثة بالإضافة إلى خبرتي العميقة في لغات البرمجة
-                                        وأعمل على تطوير حلول مخصصة تساعد العملاء في تحسين أعمالهم الرقمية من خلال تقديم مواقع
-                                        وتطبيقات ويب سهلة الاستخدام، على أن تكون آمنة وذات أداء عالي.
-
-                                        <br />
-
-                                        مع الحرص على بناء أنظمة قوية وفعالة تلبي احتياجات المستخدمين.
-                                        أنا ملتزم بتقديم أفضل الحلول التكنولوجية التي تساهم في تحقيق أهداف العملاء ورفع كفاءة أعمالهم.
-
-                                        <br />
-
-                                        إلى جانب ذلك، أتمتع بمهارات تصميم جرافيكي احترافية باستخدام برامج لتقديم تصاميم مرئية مميزة
-                                        تعزز الهوية البصرية للشركات. أسعى دائمًا للابتكار وتقديم عمل يتسم بالجودة العالية والكفاءة
-                                        في بيئات عمل متعددة الأوجه.
-
-                                        <br />
-
-                                        كما أجيد صيانة الحاسب الآلي سواء كانت معدات أو برمجيات ولدي خبرة واسعة في مجال البرامج التعليمية.
-                                    </span>
-
+                                <p class="ae-2 fromLeft hero-text" style="font-family: 'Cairo', sans-serif; text-align: justify; text-justify: inter-word; line-height: 1.9;"
+                                   data-ar="مبرمج متخصص في تطوير مواقع الويب وتطبيقات سطح المكتب بخبرة تمتد لأكثر من 8 سنوات. أمتلك مهارات عالية في استخدام تقنيات الويب الحديثة بالإضافة إلى خبرتي العميقة في لغات البرمجة وأعمل على تطوير حلول مخصصة تساعد العملاء في تحسين أعمالهم الرقمية من خلال تقديم مواقع وتطبيقات ويب سهلة الاستخدام، على أن تكون آمنة وذات أداء عالي.<br/><br/>مع الحرص على بناء أنظمة قوية وفعالة تلبي احتياجات المستخدمين. أنا ملتزم بتقديم أفضل الحلول التكنولوجية التي تساهم في تحقيق أهداف العملاء ورفع كفاءة أعمالهم.<br/><br/>إلى جانب ذلك، أتمتع بمهارات تصميم جرافيكي احترافية باستخدام برامج لتقديم تصاميم مرئية مميزة تعزز الهوية البصرية للشركات. أسعى دائمًا للابتكار وتقديم عمل يتسم بالجودة العالية والكفاءة في بيئات عمل متعددة الأوجه.<br/><br/>كما أجيد صيانة الحاسب الآلي سواء كانت معدات أو برمجيات ولدي خبرة واسعة في مجال البرامج التعليمية."
+                                   data-en="A software developer specializing in web and desktop application development with over 8 years of solid experience. Highly proficient in cutting-edge web technologies and core programming languages, creating tailored solutions that enhance digital businesses through intuitive, secure, and high-performance applications.<br/><br/>Dedicated to architecting resilient systems that satisfy end-user requirements and drive organizational efficiency.<br/><br/>Additionally, I possess professional graphic design expertise creating brand identities, print media, and promotional assets, alongside extensive skills in computer hardware and software maintenance.">
+                                    مبرمج متخصص في تطوير مواقع الويب وتطبيقات سطح المكتب بخبرة تمتد لأكثر من 8 سنوات.
+                                    أمتلك مهارات عالية في استخدام تقنيات الويب الحديثة بالإضافة إلى خبرتي العميقة في لغات البرمجة
+                                    وأعمل على تطوير حلول مخصصة تساعد العملاء في تحسين أعمالهم الرقمية من خلال تقديم مواقع
+                                    وتطبيقات ويب سهلة الاستخدام، على أن تكون آمنة وذات أداء عالي.
+                                    <br /><br />
+                                    مع الحرص على بناء أنظمة قوية وفعالة تلبي احتياجات المستخدمين.
+                                    أنا ملتزم بتقديم أفضل الحلول التكنولوجية التي تساهم في تحقيق أهداف العملاء ورفع كفاءة أعمالهم.
+                                    <br /><br />
+                                    إلى جانب ذلك، أتمتع بمهارات تصميم جرافيكي احترافية باستخدام برامج لتقديم تصاميم مرئية مميزة
+                                    تعزز الهوية البصرية للشركات. أسعى دائمًا للابتكار وتقديم عمل يتسم بالجودة العالية والكفاءة
+                                    في بيئات عمل متعددة الأوجه.
+                                    <br /><br />
+                                    كما أجيد صيانة الحاسب الآلي سواء كانت معدات أو برمجيات ولدي خبرة واسعة في مجال البرامج التعليمية.
                                 </p>
                             </li>
 
                             <li class="col-6-12">
-                                <img class="ae-4" width="605"
-                                     src="assets/img/hero.png"
-                                     alt="iPhones Thumbnail"
-                                     data-action="zoom" />
+                                <img class="ae-4 preview-image" width="605" src="assets/img/hero.png" alt="Hero Thumbnail" data-action="zoom" />
                             </li>
-
                         </ul>
                     </div>
-                </div>            </div>
+                </div>
+            </div>
         </div>
-        <div class="background" style="background-image:url(assets/img/background/img-5.jpg)"></div>
     </section>
 
-    <!-- Slide 2 (#60) -->
-    <section class="slide fade-6 kenBurns" data-name="videos">
-        <div class="content">
-            <div class="container">
-                <div class="wrap">
-                    <div class="fix-12-12">
-                        <h1 style="font-family: 'Cairo', sans-serif;text-align:center;margin-bottom:100px"
-                            class="ae-1 fromLeft">الكورسات والدورات</h1>
-                        <div class="row">
-                            <div class="grid justify-content-center">
-                                <div class="col-6-12">
+    <!-- =========================================
+       SLIDE 2 - الدورات والكورسات
+    ========================================= -->
+    <section class="slide  kenBurns" data-name="videos" id="videos">
+        <div class="content" style="width: 100%; max-width: 100%; padding: 0 20px;">
+            <div class="container" style="width: 100%; max-width: 100%;">
+                <div class="wrap" style="width: 100%; max-width: 100%;">
+                    <div style="width: 100%; max-width: 100%;">
+                        <h1 style="font-family: 'Cairo', sans-serif;text-align:center;margin-bottom:50px" class="ae-1 fromLeft">
+                            <span style="display:block;font-size:2.5rem;" data-ar="الكورسات والدورات" data-en="Courses & Certifications">الكورسات والدورات</span>
+                            <span style="display:block;font-size:1.5rem;opacity:0.5;margin-top:5px;" data-ar="الدورات التدريبية والشهادات" data-en="Training Courses & Certificates">الدورات التدريبية والشهادات</span>
+                        </h1>
+                        <div class="row" style="width: 100%; margin: 0;">
+                            <div class="grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; width: 100%;">
+
+                                <!-- الشهادة 1 -->
+                                <div style="padding:0; width: 100%;">
                                     <div class="artists-thumb">
                                         <div class="artists-image-wrap">
-                                            <img src="assets/img/File/mps.png" class="artists-image img-fluid">
+                                            <img src="assets/img/File/mps.png" class="artists-image img-fluid preview-image" alt="Certificate">
                                         </div>
-
                                         <div class="artists-hover" style="direction:rtl;">
-                                            <p
-                                                style="font-family: 'Cairo', sans-serif;font-size:20px;text-align:center">
-                                                <strong>اسم الشهادة:</strong>
-                                                ادارة المشاريع الصغيرة
+                                            <p style="font-family: 'Cairo', sans-serif;font-size:18px;text-align:center">
+                                                <strong data-ar="اسم الشهادة:" data-en="Certificate:">اسم الشهادة:</strong>
+                                                <span data-ar="ادارة المشاريع الصغيرة" data-en="Small Project Management">ادارة المشاريع الصغيرة</span>
                                             </p>
-                                            <p
-                                                style="font-family: 'Cairo', sans-serif;font-size:15px;text-align:center">
-                                                <strong>تاريخ البداية:</strong>
-                                                15/11/2016
+                                            <p style="font-family: 'Cairo', sans-serif;font-size:14px;text-align:center">
+                                                <strong data-ar="تاريخ البداية:" data-en="Start Date:">تاريخ البداية:</strong>
+                                                <span data-ar="15/11/2016" data-en="15/11/2016">15/11/2016</span>
                                             </p>
-                                            <p
-                                                style="font-family: 'Cairo', sans-serif;font-size:15px;text-align:center">
-                                                <strong>تاريخ النهاية:</strong>
-                                                15/12/2016
+                                            <p style="font-family: 'Cairo', sans-serif;font-size:14px;text-align:center">
+                                                <strong data-ar="تاريخ النهاية:" data-en="End Date:">تاريخ النهاية:</strong>
+                                                <span data-ar="15/12/2016" data-en="15/12/2016">15/12/2016</span>
                                             </p>
                                             <hr>
-                                            <p class="mb-0" style="font-family: 'Cairo', sans-serif;font-size:20px">
-                                                <strong>اكملت دورة تدريبية في ادارة المشاريع الصغيرة في اكاديمية العلوم
-                                                    الهندسية الجامعية
-                                                    بواقع (12) ساعة</strong>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6-12">
-                                    <div class="artists-thumb">
-                                        <div class="artists-image-wrap">
-                                            <img src="assets/img/File/ps.png" class="artists-image img-fluid">
-                                        </div>
-
-                                        <div class="artists-hover" style="direction:rtl;">
-                                            <p
-                                                style="font-family: 'Cairo', sans-serif;font-size:20px;text-align:center">
-                                                <strong>اسم الشهادة:</strong>
-                                                برنامج الفتوشوب
-                                            </p>
-                                            <p
-                                                style="font-family: 'Cairo', sans-serif;font-size:15px;text-align:center">
-                                                <strong>تاريخ البداية:</strong>
-                                                6/7/2017
-                                            </p>
-                                            <p
-                                                style="font-family: 'Cairo', sans-serif;font-size:15px;text-align:center">
-                                                <strong>تاريخ النهاية:</strong>
-                                                6/8/2017
-                                            </p>
-                                            <hr>
-                                            <p class="mb-0" style="font-family: 'Cairo', sans-serif;font-size:20px">
-                                                <strong>اكملت دورة تدريبية في مركز شباب النهضة في برنامج
-                                                    الفتوشوب</strong>
-
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="grid justify-content-center">
-                                <div class="col-6-12">
-                                    <div class="artists-thumb">
-                                        <div class="artists-image-wrap">
-                                            <img src="assets/img/File/cb.png" class="artists-image img-fluid">
-                                        </div>
-
-                                        <div class="artists-hover" style="direction:rtl;">
-                                            <p
-                                                style="font-family: 'Cairo', sans-serif;font-size:20px;text-align:center">
-                                                <strong>اسم الشهادة:</strong>
-                                                اسايات الحاسوب
-                                            </p>
-                                            <p
-                                                style="font-family: 'Cairo', sans-serif;font-size:15px;text-align:center">
-                                                <strong>تاريخ البداية:</strong>
-                                                13/11/2017
-                                            </p>
-                                            <p
-                                                style="font-family: 'Cairo', sans-serif;font-size:15px;text-align:center">
-                                                <strong>تاريخ النهاية:</strong>
-                                                20/11/2017
-                                            </p>
-                                            <hr>
-                                            <p class="mb-0" style="font-family: 'Cairo', sans-serif;font-size:20px">
-                                                <strong>اكملت دورة تدريبية في اساسيات الحاسوب في مركز ليس براون
-                                                    للتدريب
-                                                    والتنمية البشرية بواقع (21) ساعة</strong>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6-12">
-                                    <div class="artists-thumb">
-                                        <div class="artists-image-wrap">
-                                            <img src="assets/img/File/csharp.png" class="artists-image img-fluid">
-                                        </div>
-
-                                        <div class="artists-hover" style="direction:rtl;">
-                                            <p
-                                                style="font-family: 'Cairo', sans-serif;font-size:20px;text-align:center">
-                                                <strong>اسم الشهادة:</strong>
-                                                لغة سي شارب
-                                            </p>
-                                            <p
-                                                style="font-family: 'Cairo', sans-serif;font-size:15px;text-align:center">
-                                                <strong>تاريخ البداية:</strong>
-                                                21/11/2017
-                                            </p>
-                                            <p
-                                                style="font-family: 'Cairo', sans-serif;font-size:15px;text-align:center">
-                                                <strong>تاريخ النهاية:</strong>
-                                                30/11/2017
-                                            </p>
-                                            <hr>
-                                            <p class="mb-0" style="font-family: 'Cairo', sans-serif;font-size:20px">
-                                                <strong>اكملت دورة تدريبية في لغة سي شارب في مركز ليس براون
-                                                    للتدريب
-                                                    والتنمية البشرية بواقع (23) ساعة</strong>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="grid justify-content-center">
-                                <div class="col-6-12">
-                                    <div class="artists-thumb">
-                                        <div class="artists-image-wrap">
-                                            <img src="assets/img/File/psp.png" class="artists-image img-fluid">
-                                        </div>
-
-                                        <div class="artists-hover" style="direction:rtl;">
-                                            <p
-                                                style="font-family: 'Cairo', sans-serif;font-size:20px;text-align:center">
-                                                <strong>اسم الشهادة:</strong>
-                                                وضع الخطط الاستراجية
-                                            </p>
-                                            <p
-                                                style="font-family: 'Cairo', sans-serif;font-size:15px;text-align:center">
-                                                <strong>تاريخ البداية:</strong>
-                                                4/3/2020
-                                            </p>
-                                            <p
-                                                style="font-family: 'Cairo', sans-serif;font-size:15px;text-align:center">
-                                                <strong>تاريخ النهاية:</strong>
-                                                6/3/2020
-                                            </p>
-                                            <hr>
-                                            <p class="mb-0" style="font-family: 'Cairo', sans-serif;font-size:20px">
-                                                <strong>اكملت دورة تدريبية في مركز العفراء للتدريب والتطوير في ادارة
-                                                    الخطط الشخصية
+                                            <p class="mb-0" style="font-family: 'Cairo', sans-serif;font-size:16px">
+                                                <strong data-ar="اكملت دورة تدريبية في ادارة المشاريع الصغيرة في اكاديمية العلوم الهندسية الجامعية بواقع (12) ساعة" data-en="Completed a training course in Small Project Management at the University Academy of Engineering Sciences (12 hours).">
+                                                    اكملت دورة تدريبية في ادارة المشاريع الصغيرة في اكاديمية العلوم الهندسية الجامعية بواقع (12) ساعة
                                                 </strong>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- الشهادة 2 -->
+                                <div style="padding:0; width: 100%;">
+                                    <div class="artists-thumb">
+                                        <div class="artists-image-wrap">
+                                            <img src="assets/img/File/ps.png" class="artists-image img-fluid preview-image" alt="Certificate">
+                                        </div>
+                                        <div class="artists-hover" style="direction:rtl;">
+                                            <p style="font-family: 'Cairo', sans-serif;font-size:18px;text-align:center">
+                                                <strong data-ar="اسم الشهادة:" data-en="Certificate:">اسم الشهادة:</strong>
+                                                <span data-ar="برنامج الفوتوشوب" data-en="Adobe Photoshop Program">برنامج الفوتوشوب</span>
+                                            </p>
+                                            <p style="font-family: 'Cairo', sans-serif;font-size:14px;text-align:center">
+                                                <strong data-ar="تاريخ البداية:" data-en="Start Date:">تاريخ البداية:</strong>
+                                                <span data-ar="6/7/2017" data-en="6/7/2017">6/7/2017</span>
+                                            </p>
+                                            <p style="font-family: 'Cairo', sans-serif;font-size:14px;text-align:center">
+                                                <strong data-ar="تاريخ النهاية:" data-en="End Date:">تاريخ النهاية:</strong>
+                                                <span data-ar="6/8/2017" data-en="6/8/2017">6/8/2017</span>
+                                            </p>
+                                            <hr>
+                                            <p class="mb-0" style="font-family: 'Cairo', sans-serif;font-size:16px">
+                                                <strong data-ar="اكملت دورة تدريبية في مركز شباب النهضة في برنامج الفوتوشوب" data-en="Completed a training course at Al-Nahda Youth Center in Adobe Photoshop Program.">
+                                                    اكملت دورة تدريبية في مركز شباب النهضة في برنامج الفوتوشوب
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- الشهادة 3 -->
+                                <div style="padding:0; width: 100%;">
+                                    <div class="artists-thumb">
+                                        <div class="artists-image-wrap">
+                                            <img src="assets/img/File/cb.png" class="artists-image img-fluid preview-image" alt="Certificate">
+                                        </div>
+                                        <div class="artists-hover" style="direction:rtl;">
+                                            <p style="font-family: 'Cairo', sans-serif;font-size:18px;text-align:center">
+                                                <strong data-ar="اسم الشهادة:" data-en="Certificate:">اسم الشهادة:</strong>
+                                                <span data-ar="اساسيات الحاسوب" data-en="Computer Basics">اساسيات الحاسوب</span>
+                                            </p>
+                                            <p style="font-family: 'Cairo', sans-serif;font-size:14px;text-align:center">
+                                                <strong data-ar="تاريخ البداية:" data-en="Start Date:">تاريخ البداية:</strong>
+                                                <span data-ar="13/11/2017" data-en="13/11/2017">13/11/2017</span>
+                                            </p>
+                                            <p style="font-family: 'Cairo', sans-serif;font-size:14px;text-align:center">
+                                                <strong data-ar="تاريخ النهاية:" data-en="End Date:">تاريخ النهاية:</strong>
+                                                <span data-ar="20/11/2017" data-en="20/11/2017">20/11/2017</span>
+                                            </p>
+                                            <hr>
+                                            <p class="mb-0" style="font-family: 'Cairo', sans-serif;font-size:16px">
+                                                <strong data-ar="اكملت دورة تدريبية في اساسيات الحاسوب في مركز ليس براون للتدريب والتنمية البشرية بواقع (21) ساعة" data-en="Completed a training course in Computer Basics at Les Brown Center for Training & Human Development (21 hours).">
+                                                    اكملت دورة تدريبية في اساسيات الحاسوب في مركز ليس براون للتدريب والتنمية البشرية بواقع (21) ساعة
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- الشهادة 4 -->
+                                <div style="padding:0; width: 100%;">
+                                    <div class="artists-thumb">
+                                        <div class="artists-image-wrap">
+                                            <img src="assets/img/File/csharp.png" class="artists-image img-fluid preview-image" alt="Certificate">
+                                        </div>
+                                        <div class="artists-hover" style="direction:rtl;">
+                                            <p style="font-family: 'Cairo', sans-serif;font-size:18px;text-align:center">
+                                                <strong data-ar="اسم الشهادة:" data-en="Certificate:">اسم الشهادة:</strong>
+                                                <span data-ar="لغة سي شارب" data-en="C# Programming Language">لغة سي شارب</span>
+                                            </p>
+                                            <p style="font-family: 'Cairo', sans-serif;font-size:14px;text-align:center">
+                                                <strong data-ar="تاريخ البداية:" data-en="Start Date:">تاريخ البداية:</strong>
+                                                <span data-ar="21/11/2017" data-en="21/11/2017">21/11/2017</span>
+                                            </p>
+                                            <p style="font-family: 'Cairo', sans-serif;font-size:14px;text-align:center">
+                                                <strong data-ar="تاريخ النهاية:" data-en="End Date:">تاريخ النهاية:</strong>
+                                                <span data-ar="30/11/2017" data-en="30/11/2017">30/11/2017</span>
+                                            </p>
+                                            <hr>
+                                            <p class="mb-0" style="font-family: 'Cairo', sans-serif;font-size:16px">
+                                                <strong data-ar="اكملت دورة تدريبية في لغة سي شارب في مركز ليس براون للتدريب والتنمية البشرية بواقع (23) ساعة" data-en="Completed a training course in C# at Les Brown Center for Training & Human Development (23 hours).">
+                                                    اكملت دورة تدريبية في لغة سي شارب في مركز ليس براون للتدريب والتنمية البشرية بواقع (23) ساعة
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- الشهادة 5 -->
+                                <div style="padding:0; width: 100%;">
+                                    <div class="artists-thumb">
+                                        <div class="artists-image-wrap">
+                                            <img src="assets/img/File/psp.png" class="artists-image img-fluid preview-image" alt="Certificate">
+                                        </div>
+                                        <div class="artists-hover" style="direction:rtl;">
+                                            <p style="font-family: 'Cairo', sans-serif;font-size:18px;text-align:center">
+                                                <strong data-ar="اسم الشهادة:" data-en="Certificate:">اسم الشهادة:</strong>
+                                                <span data-ar="وضع الخطط الاستراتيجية" data-en="Strategic Planning">وضع الخطط الاستراتيجية</span>
+                                            </p>
+                                            <p style="font-family: 'Cairo', sans-serif;font-size:14px;text-align:center">
+                                                <strong data-ar="تاريخ البداية:" data-en="Start Date:">تاريخ البداية:</strong>
+                                                <span data-ar="4/3/2020" data-en="4/3/2020">4/3/2020</span>
+                                            </p>
+                                            <p style="font-family: 'Cairo', sans-serif;font-size:14px;text-align:center">
+                                                <strong data-ar="تاريخ النهاية:" data-en="End Date:">تاريخ النهاية:</strong>
+                                                <span data-ar="6/3/2020" data-en="6/3/2020">6/3/2020</span>
+                                            </p>
+                                            <hr>
+                                            <p class="mb-0" style="font-family: 'Cairo', sans-serif;font-size:16px">
+                                                <strong data-ar="اكملت دورة تدريبية في مركز العفراء للتدريب والتطوير في ادارة الخطط الشخصية" data-en="Completed a training course at Al-Afraa Center in Personal Strategic Planning.">
+                                                    اكملت دورة تدريبية في مركز العفراء للتدريب والتطوير في ادارة الخطط الشخصية
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        <div class="background" style="background-image:url(assets/img/background/img-1.jpg)"></div>
     </section>
+    <!-- =========================================
+       SLIDE 3 - الخبرات
+    ========================================= -->
+    <section class="slide  kenBurns" data-name="features" id="features">
+        <div class="content" style="width: 100%; max-width: 100%; padding: 0 15px;">
+            <div class="container" style="width: 100%; max-width: 100%;">
+                <div class="wrap" style="width: 100%;">
+                    <div style="width: 100%; max-width: 100%;">
+                        <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; width: 100%;">
+                            <h1 style="font-family: 'Cairo', sans-serif; text-align: center; margin-bottom: 50px; grid-column: 1 / -1;" class="ae-1 fromLeft">
+                                <span style="display:block;font-size:2.5rem;" data-ar="الخبرات" data-en="Experiences">الخبرات</span>
+                                <span style="display:block;font-size:1.5rem;opacity:0.5;margin-top:5px;" data-ar="الخبرات المهنية" data-en="Professional Experiences">الخبرات المهنية</span>
+                            </h1>
 
-    <dev>
-        <div class="popup autoplay" data-popup-id="60-1">
-            <div class="close"><svg>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
-                </svg></div>
-            <div class="content">
-                <div class="container">
-                    <div class="wrap">
-                        <div class="fix-10-12">
-                            <div class="embedVideo popupContent">
-                                <iframe src="https://player.vimeo.com/video/101231747?color=ff0179&portrait=0"
-                                    frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Popup Video -->
-        <div class="popup autoplay" data-popup-id="60-2">
-            <div class="close"><svg>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
-                </svg></div>
-            <div class="content">
-                <div class="container">
-                    <div class="wrap">
-                        <div class="fix-10-12">
-                            <div class="embedVideo popupContent">
-                                <iframe src="https://player.vimeo.com/video/101231747?color=ff0179&portrait=0"
-                                    frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Popup Video -->
-        <div class="popup autoplay" data-popup-id="60-3">
-            <div class="close"><svg>
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
-                </svg></div>
-            <div class="content">
-                <div class="container">
-                    <div class="wrap">
-                        <div class="fix-10-12">
-                            <div class="embedVideo popupContent">
-                                <iframe src="https://player.vimeo.com/video/101231747?color=ff0179&portrait=0"
-                                    frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </dev>
-
-    <!-- Slide 3 (#27) -->
-    <section class="slide fade-6 kenBurns" data-name="features">
-        <div class="content">
-            <div class="container">
-                <div class="wrap">
-                    <div class="fix-12-12">
-                        <div class="grid">
-                            <h1 style="font-family: 'Cairo', sans-serif;text-align:center;margin-bottom:100px"
-                                class="ae-1 fromLeft">الخبرات</h1>
-                            <div style="margin-top: 20px;"class="col-4-12 left">
-                                <div class="custom-block custom-block-full"
-                                    style="background-color: black;opacity: 0.7;">
+                            <!-- خبرة 1 -->
+                            <div style="margin-top: 0;" class="left">
+                                <div class="custom-block custom-block-full" style="background-color: black; opacity: 0.7; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
                                     <div class="custom-block-image-wrap">
                                         <a href="#">
-                                            <img style="height:100%" src="assets/img/File/ts.png"
-                                                class="custom-block-image img-fluid preview-image" alt="">
+                                            <img style="height:100%; width:100%; object-fit: cover;" src="assets/img/File/ts.png" class="custom-block-image img-fluid preview-image" alt="">
                                         </a>
                                     </div>
-                                    <div class="custom-block-info">
-                                        <h5 class="mb-2" style="text-align: center;">
-                                            <strong style="font-family: 'Cairo', sans-serif;"> متدرب في الدعم
-                                                الفني</strong>
-                                        </h5>
-                                        <br>
-                                        <p class="mb-0 short-text"
-                                            style="font-family: 'Cairo', sans-serif;text-align:center;font-size:15px">
-                                            عملت كمتدرب في قسم تكنولوجيا المعلومات والاتصالات في مختبرات الحاسب الآلي في كلية الإمارات للعلوم والتكنولوجيا وكانت واجباتي هي
-•
-كوننا نقطة الاتصال الأولى لجميع مشكلات تكنولوجيا المعلومات
-تسجيل الأخطاء وإدارة أوقات الاستجابة وتشخيص المشكلات وحلها بكفاءة
-التأكد من أن جميع الأجهزة تعمل بمستواها الأمثل مع آخر التحديثات والتصحيحات
-توزيع الوظائف ذات الصلة على الموظفين المبتدئين وتقديم الدعم عند الحاجة
-إدارة مكتب مساعدة تكنولوجيا المعلومات وتقديم حلول فورية لقضايا تكنولوجيا المعلومات
-إجراء الفحوصات التشخيصية وخدمة أجهزة تكنولوجيا المعلومات الأساسية
-شرح مشكلات تكنولوجيا المعلومات المعقدة للموظفين غير التقنيين
-تحديد وحل مشاكل تكنولوجيا المعلومات وتسجيلها في قواعد البيانات ذات الصلة</p>
-                                        <span class="read-more-btn">المزيد</span>
-
-                                        <div class="custom-block-bottom d-flex justify-content-between mt-3"
-                                            style="text-align: center;">
-
-                                            <a href="#" style="font-family: 'Cairo', sans-serif;">
-                                                من
-                                                <span>1\10\2016</span>
-                                            </a>
-
-                                            <a href="#" style="font-family: 'Cairo', sans-serif;">
-                                                الي
-                                                <span>30\9\2017</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div style="margin-top: 20px;"class="col-4-12 left">
-                                <div class="custom-block custom-block-full"
-                                    style="background-color: black;opacity: 0.7;">
-                                    <div class="custom-block-image-wrap">
-                                        <a href="#">
-                                            <img style="height:100%" src="assets/img/File/programming.png"
-                                                class="custom-block-image img-fluid preview-image" alt="">
-                                        </a>
-                                    </div>
-
-                                    <div class="custom-block-info">
-                                        <h5 class="mb-2" style="text-align: center;">
-                                            <strong style="font-family: 'Cairo', sans-serif;"> مبرمج ومطور </strong>
-                                        </h5>
-                                        <br>
-                                        <p class="mb-0 short-text"
-                                            style="font-family: 'Cairo', sans-serif;text-align:center;font-size:15px">
-                                            عملت كمطور دوت نت في قسم تكنولوجيا المعلومات والاتصالات 
+                                    <div class="custom-block-info" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                                        <div>
+                                            <h5 class="mb-2" style="text-align: center;">
+                                                <strong style="font-family: 'Cairo', sans-serif;">
+                                                    <span style="display:block;" data-ar="متدرب في الدعم الفني" data-en="IT Support Trainee">متدرب في الدعم الفني</span>
+                                                </strong>
+                                            </h5>
                                             <br>
-في مختبرات كلية الإمارات للعلوم والتكنولوجيا واجباته هي
-<br>
-حل جميع مشكلات تكنولوجيا المعلومات، التعامل المطلق مع 
-• التعامل مع تقارير كريستال ريبورت
-• التعامل مع  قاعدة البيانات
-تحليل الأنظمة قبل وبعد التنفيذ بلغات التحليل
-تصميم التطبيقات و تصميم واجهات الشاشة لتطبيقات سطح المكتب المختلفة بجميع الأدوات المتوفرة في 
-الكلية والبرامج كانت 
-<br>
-Visual Studio / Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting.
-Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting </p>
-                                        <span class="read-more-btn">المزيد</span>
-                                        <div class="custom-block-bottom d-flex justify-content-between mt-3"
-                                            style="text-align: center;">
-
+                                            <p class="mb-0 short-text" style="font-family: 'Cairo', sans-serif; text-align: center; font-size: 15px; line-height: 1.8; margin-bottom: 2px;"
+                                               data-ar="عملت كمتدرب في قسم تكنولوجيا المعلومات والاتصالات في مختبرات الحاسب الآلي في كلية الإمارات للعلوم والتكنولوجيا وكانت واجباتي هي: كوننا نقطة الاتصال الأولى لجميع مشكلات تكنولوجيا المعلومات، تسجيل الأخطاء وإدارة أوقات الاستجابة وتشخيص المشكلات وحلها بكفاءة، التأكد من أن جميع الأجهزة تعمل بمستواها الأمثل مع آخر التحديثات والتصحيحات، توزيع الوظائف ذات الصلة على الموظفين المبتدئين وتقديم الدعم عند الحاجة، إدارة مكتب مساعدة تكنولوجيا المعلومات وتقديم حلول فورية لقضايا تكنولوجيا المعلومات، إجراء الفحوصات التشخيصية وخدمة أجهزة تكنولوجيا المعلومات الأساسية، شرح مشكلات تكنولوجيا المعلومات المعقدة للموظفين غير التقنيين، تحديد وحل مشاكل تكنولوجيا المعلومات وتسجيلها في قواعد البيانات ذات الصلة."
+                                               data-en="Worked as an IT and Communications trainee in the computer labs at Emirates College for Science and Technology. Responsibilities included: being the first point of contact for all IT issues, logging errors and managing response times, diagnosing and resolving problems efficiently, ensuring all devices operate optimally with the latest updates and patches, distributing related tasks to junior staff and providing support when needed, managing the IT helpdesk and providing immediate solutions to IT issues, performing diagnostic checks and servicing basic IT equipment, explaining complex IT issues to non-technical staff, and identifying, resolving, and recording IT problems in relevant databases.">
+                                                عملت كمتدرب في قسم تكنولوجيا المعلومات والاتصالات في مختبرات الحاسب الآلي في كلية الإمارات للعلوم والتكنولوجيا وكانت واجباتي هي: كوننا نقطة الاتصال الأولى لجميع مشكلات تكنولوجيا المعلومات، تسجيل الأخطاء وإدارة أوقات الاستجابة وتشخيص المشكلات وحلها بكفاءة، التأكد من أن جميع الأجهزة تعمل بمستواها الأمثل مع آخر التحديثات والتصحيحات، توزيع الوظائف ذات الصلة على الموظفين المبتدئين وتقديم الدعم عند الحاجة، إدارة مكتب مساعدة تكنولوجيا المعلومات وتقديم حلول فورية لقضايا تكنولوجيا المعلومات، إجراء الفحوصات التشخيصية وخدمة أجهزة تكنولوجيا المعلومات الأساسية، شرح مشكلات تكنولوجيا المعلومات المعقدة للموظفين غير التقنيين، تحديد وحل مشاكل تكنولوجيا المعلومات وتسجيلها في قواعد البيانات ذات الصلة.
+                                            </p>
+                                            <span class="read-more-btn" data-ar="المزيد" data-en="Read More">المزيد</span>
+                                        </div>
+                                        <div class="custom-block-bottom d-flex justify-content-between mt-3" style="text-align: center;">
                                             <a href="#" style="font-family: 'Cairo', sans-serif;">
-                                                من
-                                                <span>11\2021</span>
+                                                <span data-ar="من" data-en="From">من</span>
+                                                <span>1/10/2016</span>
                                             </a>
-
                                             <a href="#" style="font-family: 'Cairo', sans-serif;">
-                                                الي
-                                                <span>28\2\2021</span>
+                                                <span data-ar="الي" data-en="To">الي</span>
+                                                <span>30/9/2017</span>
                                             </a>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-                            <div style="margin-top: 20px;"class="col-4-12">
-                                <div class="custom-block custom-block-full"
-                                    style="background-color: black;opacity: 0.7;">
+
+                            <!-- خبرة 2 -->
+                            <div style="margin-top: 0;" class="left">
+                                <div class="custom-block custom-block-full" style="background-color: black; opacity: 0.7; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
                                     <div class="custom-block-image-wrap">
                                         <a href="#">
-                                            <img style="height:100%" src="assets/img/File/maintenance.png"
-                                                class="custom-block-image img-fluid preview-image" alt="">
+                                            <img style="height:100%; width:100%; object-fit: cover;" src="assets/img/File/programming.png" class="custom-block-image img-fluid preview-image" alt="">
                                         </a>
                                     </div>
-
-                                    <div class="custom-block-info">
-                                        <h5 class="mb-2" style="text-align: center;">
-                                            <strong style="font-family: 'Cairo', sans-serif;">مهندس الصيانة</strong>
-                                        </h5>
-                                        <br>
-                                        <p class="mb-0 short-text"
-                                            style="font-family: 'Cairo', sans-serif;text-align:center;font-size:15px">
-                                            عملت في وحدة الاتصالات وتقنية المعلومات بكلية الإمارات للعلوم والتكنولوجيا كمهندس صيانة .
-وقامت خلال تلك الفترة بالمهام التالية:
-• كوننا نقطة الاتصال الأولى لجميع مشكلات الصيانة. • تسجيل الأخطاء وإدارة وقت الاستجابة.
-• تشخيص المشكلات وحلها بكفاءة.
-التأكد من أن جميع الأجهزة تعمل عند المستوى الأمثل مع آخر التحديثات والتصحيحات.
-• توزيع الوظائف ذات الصلة على الموظفين المبتدئين وتقديم الدعم عند الحاجة.
-• تشغيل الفحوصات التشخيصية وخدمة أجهزة تكنولوجيا المعلومات الأساسية. شرح مشكلات تكنولوجيا المعلومات المعقدة للموظفين غير التقنيين.
-تحديد وحل مشاكل تكنولوجيا المعلومات وتسجيلها في قواعد البيانات ذات الصلة.
-تركيب نظام جديد لجميع الموظفين.
-توفير التدريب لجميع المستخدمين.
-إصلاح الأجهزة وترقيتها والتأكد من أن جميع أجهزة الكمبيوتر تعمل بكامل طاقتها.</p>
-                                        <span class="read-more-btn">المزيد</span>
-
-                                        <div class="custom-block-bottom d-flex justify-content-between mt-3"
-                                            style="text-align: center;">
-
+                                    <div class="custom-block-info" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                                        <div>
+                                            <h5 class="mb-2" style="text-align: center;">
+                                                <strong style="font-family: 'Cairo', sans-serif;">
+                                                    <span style="display:block;" data-ar="مبرمج ومطور" data-en="Programmer & Developer">مبرمج ومطور</span>
+                                                </strong>
+                                            </h5>
+                                            <br>
+                                            <p class="mb-0 short-text" style="font-family: 'Cairo', sans-serif; text-align: center; font-size: 15px; line-height: 1.8; margin-bottom: 2px;"
+                                               data-ar="عملت كمطور دوت نت في قسم تكنولوجيا المعلومات والاتصالات في مختبرات كلية الإمارات للعلوم والتكنولوجيا. شملت المهام: حل جميع مشكلات تكنولوجيا المعلومات، التعامل مع تقارير كريستال ريبورت، التعامل مع قواعد البيانات، تحليل الأنظمة قبل وبعد التنفيذ بلغات التحليل، تصميم التطبيقات وتصميم واجهات الشاشة لتطبيقات سطح المكتب المختلفة. التقنيات المستخدمة: Visual Studio / Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting."
+                                               data-en="Worked as a .NET developer in the IT and Communications department at Emirates College for Science and Technology. Responsibilities included: resolving all IT issues, working with Crystal Reports, managing databases, analyzing systems before and after implementation using analysis languages, designing applications and screen interfaces for various desktop applications. Technologies used: Visual Studio / Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting.">
+                                                عملت كمطور دوت نت في قسم تكنولوجيا المعلومات والاتصالات في مختبرات كلية الإمارات للعلوم والتكنولوجيا. شملت المهام: حل جميع مشكلات تكنولوجيا المعلومات، التعامل مع تقارير كريستال ريبورت، التعامل مع قواعد البيانات، تحليل الأنظمة قبل وبعد التنفيذ بلغات التحليل، تصميم التطبيقات وتصميم واجهات الشاشة لتطبيقات سطح المكتب المختلفة. التقنيات المستخدمة: Visual Studio / Visual Basic / C-Sharp / Sql Server / Crystal Report Reporting.
+                                            </p>
+                                            <span class="read-more-btn" data-ar="المزيد" data-en="Read More">المزيد</span>
+                                        </div>
+                                        <div class="custom-block-bottom d-flex justify-content-between mt-3" style="text-align: center;">
                                             <a href="#" style="font-family: 'Cairo', sans-serif;">
-                                                من
-                                                <span>1\10\2020</span>
+                                                <span data-ar="من" data-en="From">من</span>
+                                                <span>11/2021</span>
                                             </a>
-
                                             <a href="#" style="font-family: 'Cairo', sans-serif;">
-                                                الي
-                                                <span>28\2\2021</span>
+                                                <span data-ar="الي" data-en="To">الي</span>
+                                                <span>28/2/2021</span>
                                             </a>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-                            <div style="margin-top: 20px;" class="col-4-12">
-                                <div class="custom-block custom-block-full"
-                                    style="background-color: black;opacity: 0.7;">
+
+                            <!-- خبرة 3 -->
+                            <div style="margin-top: 0;">
+                                <div class="custom-block custom-block-full" style="background-color: black; opacity: 0.7; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
                                     <div class="custom-block-image-wrap">
                                         <a href="#">
-                                            <img style="height:100%" src="assets/img/File/designer.png"
-                                                class="custom-block-image img-fluid preview-image" alt="">
+                                            <img style="height:100%; width:100%; object-fit: cover;" src="assets/img/File/maintenance.png" class="custom-block-image img-fluid preview-image" alt="">
                                         </a>
                                     </div>
-
-                                    <div class="custom-block-info">
-                                        <h5 class="mb-2" style="text-align: center;">
-                                            <strong style="font-family: 'Cairo', sans-serif;"> مصمم جرافيك</strong>
-                                        </h5>
-                                        <br>
-                                        <p class="mb-0 short-text"
-                                            style="font-family: 'Cairo', sans-serif;text-align:center;font-size:15px">
-                                            عملت في كلية الإمارات للعلوم والتكنولوجيا كمصمم للمجلات والصحف والملفات والإعلانات والأيقونات الخاصة بالكلية.
-                                            كونها نقطة الاتصال الأولى لجميع قضايا التصميم.
-                                            - تصميم وتنسيق المجلات والصحف.
-                                            تصميم الملفات والملصقات.
-                                            • تصميم الإعلانات والملصقات.
-                                            تصميم الأوراق والظروف.</p>
-                                        <span class="read-more-btn">المزيد</span>
-
-                                        <div class="custom-block-bottom d-flex justify-content-between mt-3"
-                                            style="text-align: center;">
-
+                                    <div class="custom-block-info" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                                        <div>
+                                            <h5 class="mb-2" style="text-align: center;">
+                                                <strong style="font-family: 'Cairo', sans-serif;">
+                                                    <span style="display:block;" data-ar="مهندس الصيانة" data-en="Maintenance Engineer">مهندس الصيانة</span>
+                                                </strong>
+                                            </h5>
+                                            <br>
+                                            <p class="mb-0 short-text" style="font-family: 'Cairo', sans-serif; text-align: center; font-size: 15px; line-height: 1.8; margin-bottom: 2px;"
+                                               data-ar="عملت في وحدة الاتصالات وتقنية المعلومات بكلية الإمارات للعلوم والتكنولوجيا كمهندس صيانة. شملت المهام: كوننا نقطة الاتصال الأولى لجميع مشكلات الصيانة، تسجيل الأخطاء وإدارة وقت الاستجابة، تشخيص المشكلات وحلها بكفاءة، التأكد من أن جميع الأجهزة تعمل عند المستوى الأمثل مع آخر التحديثات والتصحيحات، توزيع الوظائف ذات الصلة على الموظفين المبتدئين وتقديم الدعم عند الحاجة، تشغيل الفحوصات التشخيصية وخدمة أجهزة تكنولوجيا المعلومات الأساسية، شرح مشكلات تكنولوجيا المعلومات المعقدة للموظفين غير التقنيين، تحديد وحل مشاكل تكنولوجيا المعلومات وتسجيلها في قواعد البيانات ذات الصلة، تركيب نظام جديد لجميع الموظفين، توفير التدريب لجميع المستخدمين، إصلاح الأجهزة وترقيتها والتأكد من أن جميع أجهزة الكمبيوتر تعمل بكامل طاقتها."
+                                               data-en="Worked as a Maintenance Engineer in the Communications and IT unit at Emirates College for Science and Technology. Responsibilities included: being the first point of contact for all maintenance issues, logging errors and managing response times, diagnosing and resolving problems efficiently, ensuring all devices operate at optimal levels with the latest updates and patches, distributing related tasks to junior staff and providing support when needed, performing diagnostic checks and servicing basic IT equipment, explaining complex IT issues to non-technical staff, identifying, resolving, and recording IT problems in relevant databases, installing new systems for all employees, providing training to all users, repairing and upgrading equipment and ensuring all computers run at full capacity.">
+                                                عملت في وحدة الاتصالات وتقنية المعلومات بكلية الإمارات للعلوم والتكنولوجيا كمهندس صيانة. شملت المهام: كوننا نقطة الاتصال الأولى لجميع مشكلات الصيانة، تسجيل الأخطاء وإدارة وقت الاستجابة، تشخيص المشكلات وحلها بكفاءة، التأكد من أن جميع الأجهزة تعمل عند المستوى الأمثل مع آخر التحديثات والتصحيحات، توزيع الوظائف ذات الصلة على الموظفين المبتدئين وتقديم الدعم عند الحاجة، تشغيل الفحوصات التشخيصية وخدمة أجهزة تكنولوجيا المعلومات الأساسية، شرح مشكلات تكنولوجيا المعلومات المعقدة للموظفين غير التقنيين، تحديد وحل مشاكل تكنولوجيا المعلومات وتسجيلها في قواعد البيانات ذات الصلة، تركيب نظام جديد لجميع الموظفين، توفير التدريب لجميع المستخدمين، إصلاح الأجهزة وترقيتها والتأكد من أن جميع أجهزة الكمبيوتر تعمل بكامل طاقتها.
+                                            </p>
+                                            <span class="read-more-btn" data-ar="المزيد" data-en="Read More">المزيد</span>
+                                        </div>
+                                        <div class="custom-block-bottom d-flex justify-content-between mt-3" style="text-align: center;">
                                             <a href="#" style="font-family: 'Cairo', sans-serif;">
-                                                من
-                                                <span>1\1\2021</span>
+                                                <span data-ar="من" data-en="From">من</span>
+                                                <span>1/10/2020</span>
                                             </a>
-
                                             <a href="#" style="font-family: 'Cairo', sans-serif;">
-                                                الي
-                                                <span>28\2\2021</span>
+                                                <span data-ar="الي" data-en="To">الي</span>
+                                                <span>28/2/2021</span>
                                             </a>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-                            <div style="margin-top: 20px;" class="col-4-12">
-                                <div class="custom-block custom-block-full"
-                                    style="background-color: black;opacity: 0.7;">
+
+                            <!-- خبرة 4 -->
+                            <div style="margin-top: 0;">
+                                <div class="custom-block custom-block-full" style="background-color: black; opacity: 0.7; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
                                     <div class="custom-block-image-wrap">
                                         <a href="#">
-                                            <img style="height:100%" src="assets/img/File/habib.jpg"
-                                                class="custom-block-image img-fluid preview-image" alt="">
+                                            <img style="height:100%; width:100%; object-fit: cover;" src="assets/img/File/designer.png" class="custom-block-image img-fluid preview-image" alt="">
                                         </a>
                                     </div>
-
-                                    <div class="custom-block-info">
-                                        <h5 class="mb-2" style="text-align: center;">
-                                            <strong style="font-family: 'Cairo', sans-serif;"> مدير ادارة تقنية
-                                                المعلومات</strong>
-                                        </h5>
-                                        <br>
-                                        <p class="mb-0 short-text"
-                                            style="font-family: 'Cairo', sans-serif;text-align:center;font-size:15px">
-                                            عملت في قسم تقنية المعلومات في شركة محمد عيسى الحبيب للمنتجات المعدنية.
-                                     أن نكون نقطة الاتصال الأولى لجميع قضايا تكنولوجيا المعلومات. وأن تكون واجباتي 
-                                            • إنشاء وإدارة قسم تكنولوجيا المعلومات بالشركة
-                                            • إضافة وتحديث أجهزة الكمبيوتر الخاصة بالشركة وخلق بيئة عمل مناسبة للموظفين والمستهلكين
-                                            • التواصل مع Odoo للدخول وتفعيل النظام
-                                            • التعريف بنظام Odoo في الشركة وتدريب الموظفين والعاملين عليه
-                                            تحديث وتطوير نظام Odoo حسب متطلبات الشركة
-                                            • إنشاء وربط كابلات شبكة الإنترنت في المنطقة
-                                            • مراجعة وتفعيل كاميرات المراقبة
-                                            شركة
-                                            • صيانة أجهزة الكمبيوتر، بما في ذلك البرامج والمعدات
-                                            تدريب العاملين على استخدام الحاسب الآلي</p>
-                                        <span class="read-more-btn">المزيد</span>
-
-                                        <div class="custom-block-bottom d-flex justify-content-between mt-3"
-                                            style="text-align: center;">
-
+                                    <div class="custom-block-info" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                                        <div>
+                                            <h5 class="mb-2" style="text-align: center;">
+                                                <strong style="font-family: 'Cairo', sans-serif;">
+                                                    <span style="display:block;" data-ar="مصمم جرافيك" data-en="Graphic Designer">مصمم جرافيك</span>
+                                                </strong>
+                                            </h5>
+                                            <br>
+                                            <p class="mb-0 short-text" style="font-family: 'Cairo', sans-serif; text-align: center; font-size: 15px; line-height: 1.8; margin-bottom: 2px;"
+                                               data-ar="عملت في كلية الإمارات للعلوم والتكنولوجيا كمصمم للمجلات والصحف والملفات والإعلانات والأيقونات الخاصة بالكلية. شملت المهام: كونها نقطة الاتصال الأولى لجميع قضايا التصميم، تصميم وتنسيق المجلات والصحف، تصميم الملفات والملصقات، تصميم الإعلانات والملصقات، تصميم الأوراق والظروف."
+                                               data-en="Worked at Emirates College for Science and Technology as a designer for magazines, newspapers, files, advertisements, and college-specific icons. Responsibilities included: being the first point of contact for all design issues, designing and formatting magazines and newspapers, designing files and posters, designing advertisements and flyers, designing papers and envelopes.">
+                                                عملت في كلية الإمارات للعلوم والتكنولوجيا كمصمم للمجلات والصحف والملفات والإعلانات والأيقونات الخاصة بالكلية. شملت المهام: كونها نقطة الاتصال الأولى لجميع قضايا التصميم، تصميم وتنسيق المجلات والصحف، تصميم الملفات والملصقات، تصميم الإعلانات والملصقات، تصميم الأوراق والظروف.
+                                            </p>
+                                            <span class="read-more-btn" data-ar="المزيد" data-en="Read More">المزيد</span>
+                                        </div>
+                                        <div class="custom-block-bottom d-flex justify-content-between mt-3" style="text-align: center;">
                                             <a href="#" style="font-family: 'Cairo', sans-serif;">
-                                                من
+                                                <span data-ar="من" data-en="From">من</span>
+                                                <span>1/1/2021</span>
+                                            </a>
+                                            <a href="#" style="font-family: 'Cairo', sans-serif;">
+                                                <span data-ar="الي" data-en="To">الي</span>
+                                                <span>28/2/2021</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- خبرة 5 -->
+                            <div style="margin-top: 0;">
+                                <div class="custom-block custom-block-full" style="background-color: black; opacity: 0.7; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                                    <div class="custom-block-image-wrap">
+                                        <a href="#">
+                                            <img style="height:100%; width:100%; object-fit: cover;" src="assets/img/File/habib.jpg" class="custom-block-image img-fluid preview-image" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="custom-block-info" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                                        <div>
+                                            <h5 class="mb-2" style="text-align: center;">
+                                                <strong style="font-family: 'Cairo', sans-serif;">
+                                                    <span style="display:block;" data-ar="مدير ادارة تقنية المعلومات" data-en="IT Department Manager">مدير ادارة تقنية المعلومات</span>
+                                                </strong>
+                                            </h5>
+                                            <br>
+                                            <p class="mb-0 short-text" style="font-family: 'Cairo', sans-serif; text-align: center; font-size: 15px; line-height: 1.8; margin-bottom: 2px;"
+                                               data-ar="عملت في قسم تقنية المعلومات في شركة محمد عيسى الحبيب للمنتجات المعدنية. شملت المهام: إنشاء وإدارة قسم تكنولوجيا المعلومات بالشركة، إضافة وتحديث أجهزة الكمبيوتر الخاصة بالشركة وخلق بيئة عمل مناسبة للموظفين والمستهلكين، التواصل مع Odoo للدخول وتفعيل النظام، التعريف بنظام Odoo في الشركة وتدريب الموظفين والعاملين عليه، تحديث وتطوير نظام Odoo حسب متطلبات الشركة، إنشاء وربط كابلات شبكة الإنترنت في المنطقة، مراجعة وتفعيل كاميرات المراقبة، صيانة أجهزة الكمبيوتر بما في ذلك البرامج والمعدات، تدريب العاملين على استخدام الحاسب الآلي."
+                                               data-en="Worked in the IT department at Mohammed Essa Al-Habib Metal Products Company. Responsibilities included: establishing and managing the company's IT department, adding and updating company computers and creating a suitable work environment for employees and consumers, coordinating with Odoo for system implementation and activation, introducing the Odoo system in the company and training employees and workers on it, updating and developing the Odoo system according to company requirements, creating and connecting internet network cables in the area, reviewing and activating surveillance cameras, maintaining computers including software and hardware, and training workers on computer usage.">
+                                                عملت في قسم تقنية المعلومات في شركة محمد عيسى الحبيب للمنتجات المعدنية. شملت المهام: إنشاء وإدارة قسم تكنولوجيا المعلومات بالشركة، إضافة وتحديث أجهزة الكمبيوتر الخاصة بالشركة وخلق بيئة عمل مناسبة للموظفين والمستهلكين، التواصل مع Odoo للدخول وتفعيل النظام، التعريف بنظام Odoo في الشركة وتدريب الموظفين والعاملين عليه، تحديث وتطوير نظام Odoo حسب متطلبات الشركة، إنشاء وربط كابلات شبكة الإنترنت في المنطقة، مراجعة وتفعيل كاميرات المراقبة، صيانة أجهزة الكمبيوتر بما في ذلك البرامج والمعدات، تدريب العاملين على استخدام الحاسب الآلي.
+                                            </p>
+                                            <span class="read-more-btn" data-ar="المزيد" data-en="Read More">المزيد</span>
+                                        </div>
+                                        <div class="custom-block-bottom d-flex justify-content-between mt-3" style="text-align: center;">
+                                            <a href="#" style="font-family: 'Cairo', sans-serif;">
+                                                <span data-ar="من" data-en="From">من</span>
                                                 <span>6/3/2022</span>
                                             </a>
-
                                             <a href="#" style="font-family: 'Cairo', sans-serif;">
-                                                الي
+                                                <span data-ar="الي" data-en="To">الي</span>
                                                 <span>31/5/2023</span>
                                             </a>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-                            <div style="margin-top: 20px;"class="col-4-12">
-                                <div class="custom-block custom-block-full"
-                                    style="background-color: black;opacity: 0.7;">
+
+                            <!-- خبرة 6 -->
+                            <div style="margin-top: 0;">
+                                <div class="custom-block custom-block-full" style="background-color: black; opacity: 0.7; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
                                     <div class="custom-block-image-wrap">
                                         <a href="#">
-                                            <img style="height:100%" src="assets/img/File/rmoosh.jpg"
-                                                class="custom-block-image img-fluid preview-image" alt="">
+                                            <img style="height:100%; width:100%; object-fit: cover;" src="assets/img/File/rmoosh.jpg" class="custom-block-image img-fluid preview-image" alt="">
                                         </a>
                                     </div>
-
-                                    <div class="custom-block-info">
-                                        <h5 class="mb-2" style="text-align: center;">
-                                            <strong style="font-family: 'Cairo', sans-serif;"> مدير ادارة تقنية
-                                                المعلومات</strong>
-                                        </h5>
-                                        <br>
-                                        <p class="mb-0 short-text"
-                                            style="font-family: 'Cairo', sans-serif;text-align:center;font-size:15px">
-                                            عملت في قسم تقنية المعلومات في مؤسسة انس العنزي للتجارة في رموش 
-                                            أن نكون نقطة الاتصال الأولى لجميع قضايا تكنولوجيا المعلومات. وأن تكون واجباتي 
-                                            • تصميم وإدارة الوثائق الرسمية والشعارات والإعلانات والملصقات والنشرات. 
-                                            • تطوير وصيانة متجر التجارة الإلكترونية. 
-                                            • الإشراف على وتعزيز تواجد العلامة التجارية على منصات التواصل الاجتماعي. 
-                                            • تنفيذ استراتيجيات التسويق الرقمي وتقديم الدعم الفني. 
-                                            • الإشراف على جميع جوانب العمليات في متجر التجارة الإلكترونية، بما في ذلك معالجة الطلبات وتلبيتها.
+                                    <div class="custom-block-info" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                                        <div>
+                                            <h5 class="mb-2" style="text-align: center;">
+                                                <strong style="font-family: 'Cairo', sans-serif;">
+                                                    <span style="display:block;" data-ar="مدير ادارة تقنية المعلومات" data-en="IT Department Manager">مدير ادارة تقنية المعلومات</span>
+                                                </strong>
+                                            </h5>
+                                            <br>
+                                            <p class="mb-0 short-text" style="font-family: 'Cairo', sans-serif; text-align: center; font-size: 15px; line-height: 1.8; margin-bottom: 2px;"
+                                               data-ar="عملت في قسم تقنية المعلومات في مؤسسة انس العنزي للتجارة في رموش. شملت المهام: تصميم وإدارة الوثائق الرسمية والشعارات والإعلانات والملصقات والنشرات، تطوير وصيانة متجر التجارة الإلكترونية، الإشراف على وتعزيز تواجد العلامة التجارية على منصات التواصل الاجتماعي، تنفيذ استراتيجيات التسويق الرقمي وتقديم الدعم الفني، الإشراف على جميع جوانب العمليات في متجر التجارة الإلكترونية بما في ذلك معالجة الطلبات وتلبيتها."
+                                               data-en="Worked in the IT department at Anas Al-Anzi Trading Establishment (Rmoosh). Responsibilities included: designing and managing official documents, logos, advertisements, posters, and brochures, developing and maintaining the e-commerce store, overseeing and enhancing the brand's presence on social media platforms, implementing digital marketing strategies and providing technical support, and overseeing all aspects of e-commerce store operations including order processing and fulfillment.">
+                                                عملت في قسم تقنية المعلومات في مؤسسة انس العنزي للتجارة في رموش. شملت المهام: تصميم وإدارة الوثائق الرسمية والشعارات والإعلانات والملصقات والنشرات، تطوير وصيانة متجر التجارة الإلكترونية، الإشراف على وتعزيز تواجد العلامة التجارية على منصات التواصل الاجتماعي، تنفيذ استراتيجيات التسويق الرقمي وتقديم الدعم الفني، الإشراف على جميع جوانب العمليات في متجر التجارة الإلكترونية بما في ذلك معالجة الطلبات وتلبيتها.
                                             </p>
-                                        <span class="read-more-btn">المزيد</span>
-
-                                        <div class="custom-block-bottom d-flex justify-content-between mt-3"
-                                            style="text-align: center;">
-
+                                            <span class="read-more-btn" data-ar="المزيد" data-en="Read More">المزيد</span>
+                                        </div>
+                                        <div class="custom-block-bottom d-flex justify-content-between mt-3" style="text-align: center;">
                                             <a href="#" style="font-family: 'Cairo', sans-serif;">
-                                                من
+                                                <span data-ar="من" data-en="From">من</span>
                                                 <span>1/2/2024</span>
                                             </a>
-
                                             <a href="#" style="font-family: 'Cairo', sans-serif;">
-                                                الي
+                                                <span data-ar="الي" data-en="To">الي</span>
                                                 <span>2/6/2024</span>
                                             </a>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-                            <div style="margin-top: 20px;"class="col-4-12">
-                                <div class="custom-block custom-block-full"
-                                    style="background-color: black;opacity: 0.7;">
+
+                            <!-- خبرة 7 -->
+                            <div style="margin-top: 0;">
+                                <div class="custom-block custom-block-full" style="background-color: black; opacity: 0.7; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
                                     <div class="custom-block-image-wrap">
                                         <a href="#">
-                                            <img style="height:100%" src="assets/img/File/massarat.jpeg"
-                                                class="custom-block-image img-fluid preview-image" alt="">
+                                            <img style="height:100%; width:100%; object-fit: cover;" src="assets/img/File/massarat.jpeg" class="custom-block-image img-fluid preview-image" alt="">
                                         </a>
                                     </div>
-
-                                    <div class="custom-block-info">
-                                        <h5 class="mb-2" style="text-align: center;">
-                                            <strong style="font-family: 'Cairo', sans-serif;"> مطور برامج اول ومحلل انظمة</strong>
-                                        </h5>
-                                        <br>
-                                        <p class="mb-0 short-text"
-                                            style="font-family: 'Cairo', sans-serif;text-align:center;font-size:15px">
-                                            عملت في قسم تقنية المعلومات في مؤسسة مسارات وتشيد قسم البرمجة 
-                                            علي أن نكون نقطة الاتصال الأولى لجميع قضايا تكنولوجيا المعلومات. وأن تكون واجباتي 
-                                           تطوير تطبيقات الويب باستخدام ASP.NET Core و C#.
-• تصميم وبرمجة واجهات برمجة التطبيقات (APIs).
-• تطوير خدمات RESTful APIs وربط الأنظمة المختلفة.
-• تصميم وتطوير واجهات المستخدم باستخدام Angular.
-• تصميم وإدارة قواعد البيانات باستخدام Microsoft SQL Server.
-• تطبيق مفاهيم Clean Architecture و CQRS و MediatR.
-• تحليل متطلبات الأعمال وتحويلها إلى حلول تقنية فعالة.
-• تصميم نماذج البيانات وقواعد الأعمال والعمليات التشغيلية.
-• إدارة الصلاحيات والمصادقة باستخدام JWT Authentication.
-• تحسين الأداء والأمان للتطبيقات وقواعد البيانات.
-• إعداد الوثائق الفنية وتحليل الأنظمة.
-• تصميم البنية المعمارية للأنظمة وفق أفضل الممارسات الهندسية.
-• بناء أنظمة التتبع والتدقيق (Audit Trail).
-• تحسين الموثوقية وقابلية التوسع والأداء للأنظمة البرمجية.
+                                    <div class="custom-block-info" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                                        <div>
+                                            <h5 class="mb-2" style="text-align: center;">
+                                                <strong style="font-family: 'Cairo', sans-serif;">
+                                                    <span style="display:block;" data-ar="مطور برامج اول ومحلل انظمة" data-en="Senior Software Developer & Systems Analyst">مطور برامج اول ومحلل انظمة</span>
+                                                </strong>
+                                            </h5>
+                                            <br>
+                                            <p class="mb-0 short-text" style="font-family: 'Cairo', sans-serif; text-align: center; font-size: 15px; line-height: 1.8; margin-bottom: 2px;"
+                                               data-ar="عملت في قسم تقنية المعلومات في مؤسسة مسارات وتشيد قسم البرمجة. شملت المهام: تطوير تطبيقات الويب باستخدام ASP.NET Core و C#، تصميم وبرمجة واجهات برمجة التطبيقات (APIs)، تطوير خدمات RESTful APIs وربط الأنظمة المختلفة، تصميم وتطوير واجهات المستخدم باستخدام Angular، تصميم وإدارة قواعد البيانات باستخدام Microsoft SQL Server، تطبيق مفاهيم Clean Architecture و CQRS و MediatR، تحليل متطلبات الأعمال وتحويلها إلى حلول تقنية فعالة، تصميم نماذج البيانات وقواعد الأعمال والعمليات التشغيلية، إدارة الصلاحيات والمصادقة باستخدام JWT Authentication، تحسين الأداء والأمان للتطبيقات وقواعد البيانات، إعداد الوثائق الفنية وتحليل الأنظمة، تصميم البنية المعمارية للأنظمة وفق أفضل الممارسات الهندسية، بناء أنظمة التتبع والتدقيق (Audit Trail)، تحسين الموثوقية وقابلية التوسع والأداء للأنظمة البرمجية."
+                                               data-en="Worked in the IT department at Massarat Establishment, establishing the programming department. Responsibilities included: developing web applications using ASP.NET Core and C#, designing and programming APIs, developing RESTful APIs and integrating different systems, designing and developing user interfaces using Angular, designing and managing databases using Microsoft SQL Server, applying Clean Architecture, CQRS, and MediatR concepts, analyzing business requirements and converting them into effective technical solutions, designing data models, business rules, and operational processes, managing permissions and authentication using JWT Authentication, optimizing performance and security for applications and databases, preparing technical documentation and system analysis, designing system architecture according to best engineering practices, building audit trail systems, and improving reliability, scalability, and performance of software systems.">
+                                                عملت في قسم تقنية المعلومات في مؤسسة مسارات وتشيد قسم البرمجة. شملت المهام: تطوير تطبيقات الويب باستخدام ASP.NET Core و C#، تصميم وبرمجة واجهات برمجة التطبيقات (APIs)، تطوير خدمات RESTful APIs وربط الأنظمة المختلفة، تصميم وتطوير واجهات المستخدم باستخدام Angular، تصميم وإدارة قواعد البيانات باستخدام Microsoft SQL Server، تطبيق مفاهيم Clean Architecture و CQRS و MediatR، تحليل متطلبات الأعمال وتحويلها إلى حلول تقنية فعالة، تصميم نماذج البيانات وقواعد الأعمال والعمليات التشغيلية، إدارة الصلاحيات والمصادقة باستخدام JWT Authentication، تحسين الأداء والأمان للتطبيقات وقواعد البيانات، إعداد الوثائق الفنية وتحليل الأنظمة، تصميم البنية المعمارية للأنظمة وفق أفضل الممارسات الهندسية، بناء أنظمة التتبع والتدقيق (Audit Trail)، تحسين الموثوقية وقابلية التوسع والأداء للأنظمة البرمجية.
                                             </p>
-                                        <span class="read-more-btn">المزيد</span>
-
-                                        <div class="custom-block-bottom d-flex justify-content-between mt-3"
-                                            style="text-align: center;">
-
+                                            <span class="read-more-btn" data-ar="المزيد" data-en="Read More">المزيد</span>
+                                        </div>
+                                        <div class="custom-block-bottom d-flex justify-content-between mt-3" style="text-align: center;">
                                             <a href="#" style="font-family: 'Cairo', sans-serif;">
-                                                من
+                                                <span data-ar="من" data-en="From">من</span>
                                                 <span>1/7/2025</span>
                                             </a>
-
                                             <a href="#" style="font-family: 'Cairo', sans-serif;">
-                                                الي
+                                                <span data-ar="الي" data-en="To">الي</span>
                                                 <span>1/6/2026</span>
                                             </a>
                                         </div>
                                     </div>
-
                                 </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- =========================================
+       SLIDE 4 - المشاريع
+    ========================================= -->
+    <section class="slide  kenBurns" data-name="case" id="case">
+        <div class="content" style="width: 100%; max-width: 100%; padding: 0 15px;">
+            <div class="container" style="width: 100%; max-width: 100%;">
+                <div class="wrap" style="width: 100%;">
+                    <div style="width: 100%; max-width: 100%;">
+                        <div class="grid" style="width: 100%;">
+                            <h1 style="font-family: 'Cairo', sans-serif; text-align: center; margin-bottom: 50px; grid-column: 1 / -1;" class="ae-1 fromLeft">
+                                <span style="display:block;font-size:2.5rem;" data-ar="المشاريع" data-en="Projects">المشاريع</span>
+                                <span style="display:block;font-size:1.5rem;opacity:0.5;margin-top:5px;" data-ar="المشاريع المنفذة " data-en="Executed Projects">المشاريع المنفذة</span>
+                            </h1>
+
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; width: 100%;">
+
+                                <!-- مشروع 1 -->
+                                <div class="single-team" style="margin-top: 0; height: 100%;">
+                                    <a href="https://drive.google.com/drive/folders/1rr5SVVjhI43pO5YlCi9PJ2Tiy_knQzvv" target="_blank" style="text-decoration: none; display: flex; flex-direction: column; height: 100%;">
+                                        <div class="imgpro-area">
+                                            <img src="assets/img/desing.png" class="img-responsive preview-image" alt="Project">
+                                        </div>
+                                        <div class="imgpro-text" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                                            <div>
+                                                <h4 data-ar="أعمال الجرافيك" data-en="Graphic Design Portfolio">اعمال الجرافيك</h4>
+                                                <h5 data-ar="تصاميم الجرافيك من بوستات وبوسترات واعلانات واوراق رسمية وهويات بصرية باستخدام الفوتوشوب واليستريتور والانديزاين" data-en="Graphic design collections including posters, brand identities, ads, and stationery via Photoshop, Illustrator, and InDesign.">
+                                                    تصاميم الجرافيك من بوستات وبوسترات واعلانات واوراق رسمية وهويات بصرية باستخدام الفوتوشوب واليستريتور والانديزاين
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <!-- مشروع 2 -->
+                                <div class="single-team" style="margin-top: 0; height: 100%;">
+                                    <a href="https://hnoodarkawit.github.io/Anayat_Elmohtaref/" target="_blank" style="text-decoration: none; display: flex; flex-direction: column; height: 100%;">
+                                        <div class="imgpro-area">
+                                            <img src="assets/img/asd.png" class="img-responsive preview-image" alt="Project">
+                                        </div>
+                                        <div class="imgpro-text" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                                            <div>
+                                                <h4 data-ar="موقع عناية المحترف للتكييف والتبريد" data-en="Anayat Elmohtaref AC Website">موقع عناية المحترف للتكيف والتبريد</h4>
+                                                <h5 data-ar="موقع تعريفي للمؤسسة باستخدام ASP.NET و C#" data-en="Corporate website built with ASP.NET and C#">موقع تعريفي للمؤسسة باستخدام ASP.NET و C#</h5>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <!-- مشروع 3 -->
+                                <div class="single-team" style="margin-top: 0; height: 100%;">
+                                    <a href="https://hnoodarkawit.github.io/HJ/" target="_blank" style="text-decoration: none; display: flex; flex-direction: column; height: 100%;">
+                                        <div class="imgpro-area">
+                                            <img src="assets/img/zxc.png" class="img-responsive preview-image" alt="Project">
+                                        </div>
+                                        <div class="imgpro-text" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                                            <div>
+                                                <h4 data-ar="موقع حوكة الجودة للاستشارات الغذائية" data-en="Hawkah Al-Jawdah Consulting Website">موقع حوكة الجودة للاستشارات الغذائية</h4>
+                                                <h5 data-ar="موقع تعريفي للمؤسسة باستخدام ASP.NET و C#" data-en="Consultancy website built with ASP.NET and C#">موقع تعريفي للمؤسسة باستخدام ASP.NET و C#</h5>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <!-- مشروع 4 -->
+                                <div class="single-team" style="margin-top: 0; height: 100%;">
+                                    <a href="https://hnoodarkawit.github.io/AboutEstlamt/" target="_blank" style="text-decoration: none; display: flex; flex-direction: column; height: 100%;">
+                                        <div class="imgpro-area">
+                                            <img src="assets/img/estlmet.png" class="img-responsive preview-image" alt="Project">
+                                        </div>
+                                        <div class="imgpro-text" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                                            <div>
+                                                <h4 data-ar="موقع تعريفي لتطبيق استلمت ومنصة API" data-en="Estlamt App Website & API Platform">موقع تعريفي لتطبيق استلمت ومنصة API</h4>
+                                                <h5 data-ar="منصة تعريفية ونظام خدمات برمجية API متكامل باستخدام C# و ASP.NET" data-en="Complete promotional platform and API infrastructure using C# and ASP.NET">منصة تعريفية ونظام خدمات برمجية API متكامل باستخدام C# و ASP.NET</h5>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="background" style="background-image:url(assets/img/background/img-8.jpg)"></div>
     </section>
 
-    <!-- Slide 4 (#26) -->
-    <section class="slide fade-6 kenBurns" data-name="case">
+    <!-- =========================================
+       SLIDE 5 - المهارات (3D Carousel)
+    ========================================= -->
+    <section class="slide  kenBurns" data-name="Tools" id="Tools">
         <div class="content">
             <div class="container">
                 <div class="wrap">
+                    <h1 style="font-family: 'Cairo', sans-serif; text-align: center; margin-bottom: 75px; grid-column: 1 / -1;" class="ae-1 fromLeft">
+                        <span style="display:block;font-size:2.5rem;" data-ar="المهارات" data-en="Skills">المهارات</span>
+                        <span style="display:block;font-size:1.5rem;opacity:0.5;margin-top:5px;" data-ar="المهارات العملية" data-en="Practical skills">المهارات العملية</span>
+                    </h1>
 
-                    <div class="fix-12-12">
-                        <div class="grid">
-                            <h1 style="font-family: 'Cairo', sans-serif;text-align:center;margin-bottom:100px"
-                                class="ae-1 fromLeft">
-                                المشاريع المنفذة
-                            </h1>
-                            <div class="col-6-12 left">
-                                <a href="https://drive.google.com/drive/folders/1rr5SVVjhI43pO5YlCi9PJ2Tiy_knQzvv">
-                                    <div class="single-team" style="margin-bottom: 30px;background-color: #ffffff;border-radius: 25px;">
-                                        <div class="imgpro-area">
-                                            <img src="assets/img/desing.png"
-                                                 class="img-responsive" alt=""
-                                                 style="height: 300px;width: 100%;border-radius: 20px 20px 0px 0px;">
-                                        </div>
-                                        <div class="imgpro-text"
-                                             style="text-align: center;background-color: black;padding: 20px;border-radius: 0px 0px 20px 20px;">
-                                            <h4 style="font-family: 'Cairo', sans-serif;"> اعمال الجرافيك</h4>
-
-                                            <h5 style="margin: 10px;font-family: 'Cairo', sans-serif;">
-                                                تصماميم الجرافيك من بوستات وبوسترات واعلانات واوراق رسمية وهويات بصرية وغيرها  باستخدام الفوتوشوب واليستريتور والانديزاين
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-6-12 left">
-                                <a href="https://hnoodarkawit.github.io/Anayat_Elmohtaref/">
-                                    <div class="single-team" style="margin-bottom: 30px;background-color: #ffffff;border-radius: 25px;">
-                                        <div class="imgpro-area">
-                                            <img src="assets/img/asd.png" class="img-responsive" alt=""
-                                                 style="height: 300px;width: 100%;border-radius: 20px 20px 0px 0px;">
-                                        </div>
-                                        <div class="imgpro-text"
-                                             style="text-align: center;background-color: black;padding: 20px;border-radius: 0px 0px 20px 20px;">
-                                            <h4 style="font-family: 'Cairo', sans-serif;">  موقع عناية المحترف للتكيف والتبريد</h4>
-
-                                            <h5 style="margin: 10px;font-family: 'Cairo', sans-serif;">
-                                                موقع تعريفي للمؤسسة باستخدام
-                                                <br />
-                                                ASP.NET واستخدام منصة C# لغة
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-6-12 left">
-                                <a href="https://hnoodarkawit.github.io/HJ/">
-                                    <div class="single-team" style="margin-bottom: 30px;background-color: #ffffff;border-radius: 25px;">
-                                        <div class="imgpro-area">
-                                            <img src="assets/img/zxc.png" class="img-responsive" alt=""
-                                                 style="height: 300px;width: 100%;border-radius: 20px 20px 0px 0px;">
-                                        </div>
-                                        <div class="imgpro-text"
-                                             style="text-align: center;background-color: black;padding: 20px;border-radius: 0px 0px 20px 20px;">
-                                            <h4 style="font-family: 'Cairo', sans-serif;"> موقع حوكة الجودة للاستشارات الغذائية</h4>
-
-                                            <h5 style="margin: 10px;font-family: 'Cairo', sans-serif;">
-                                                موقع تعريفي للمؤسسة باستخدام
-                                                <br />
-                                                ASP.NET واستخدام منصة C# لغة
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-6-12 left">
-                                <a href="https://hnoodarkawit.github.io/AboutEstlamt/">
-                                    <div class="single-team" style="margin-bottom: 30px;background-color: #ffffff;border-radius: 25px;">
-                                        <div class="imgpro-area">
-                                            <img src="assets/img/estlmet.png" class="img-responsive" alt=""
-                                                 style="height: 300px;width: 100%;border-radius: 20px 20px 0px 0px;">
-                                        </div>
-                                        <div class="imgpro-text"
-                                             style="text-align: center;background-color: black;padding: 20px;border-radius: 0px 0px 20px 20px;">
-                                            <h4 style="font-family: 'Cairo', sans-serif;">  موقع تعريفي لتطبيق استلمت ومنصة كاملة ل API لعمليات واجراءات التطبيق</h4>
-
-                                            <h5 style="margin: 10px;font-family: 'Cairo', sans-serif;">
-                                                موقع تعريفي لتطبيق استلمت
-                                                <br />
-                                                ASP.NET واستخدام منصة C# لغة
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="background" style="background-image:url(assets/img/background/img-9.jpg)"></div>
-    </section>
-
-    <!-- Slide 5 (#91) -->
-    <section class="slide fade-6 kenBurns" data-name="Tools">
-        <h1 style="font-family: 'Cairo', sans-serif;text-align:center" class="ae-1 fromLeft">المهارات
-        </h1>
-        <div class="content">
-            <div class="container-fluid" style=" display: flex; justify-content: center; text-align: center;">
-                <div style="padding: 0px;" class="wrap">
                     <div class="fix-12-12 toCenter">
-                        <div class="box">
-                            <span style="--i:1"><img src="assets/img/LINUX.png"></span>
-                            <span style="--i:2"><img src="assets/img/WIN.png"></span>
-                            <span style="--i:3"><img src="assets/img/VS.png"></span>
-                            <span style="--i:4"><img src="assets/img/Database.png"></span>
-                            <span style="--i:5"><img src="assets/img/Csharb.png"></span>
-                            <span style="--i:6"><img src="assets/img/VB.png"></span>
-                            <span style="--i:7"><img src="assets/img/ASP.png"></span>
-                            <span style="--i:8"><img src="assets/img/ForntEnd.png"></span>
-                            <span style="--i:9"><img src="assets/img/A.png"></span>
-                            <span style="--i:10"><img src="assets/img/ODOO.png"></span>
-                            <span style="--i:11"><img src="assets/img/PS.png"></span>
-                            <span style="--i:12"><img src="assets/img/AI.png"></span>
-                            <span style="--i:13"><img src="assets/img/ID.png"></span>
-                            <span style="--i:14"><img src="assets/img/ASANA.png"></span>
-                            <span style="--i:15"><img src="assets/img/SLACK.png"></span>
+                        <div class="skills-wrapper">
+                            <div class="box">
+                                <span style="--i:1"><img src="assets/img/LINUX.png" alt="Linux"></span>
+                                <span style="--i:2"><img src="assets/img/WIN.png" alt="Windows"></span>
+                                <span style="--i:3"><img src="assets/img/VS.png" alt="Visual Studio"></span>
+                                <span style="--i:4"><img src="assets/img/Database.png" alt="Database"></span>
+                                <span style="--i:5"><img src="assets/img/Csharb.png" alt="C#"></span>
+                                <span style="--i:6"><img src="assets/img/VB.png" alt="VB.NET"></span>
+                                <span style="--i:7"><img src="assets/img/ASP.png" alt="ASP.NET"></span>
+                                <span style="--i:8"><img src="assets/img/ForntEnd.png" alt="FrontEnd"></span>
+                                <span style="--i:9"><img src="assets/img/A.png" alt="Angular"></span>
+                                <span style="--i:10"><img src="assets/img/ODOO.png" alt="Odoo"></span>
+                                <span style="--i:11"><img src="assets/img/PS.png" alt="Photoshop"></span>
+                                <span style="--i:12"><img src="assets/img/AI.png" alt="Illustrator"></span>
+                                <span style="--i:13"><img src="assets/img/ID.png" alt="InDesign"></span>
+                                <span style="--i:14"><img src="assets/img/ASANA.png" alt="Asana"></span>
+                                <span style="--i:15"><img src="assets/img/SLACK.png" alt="Slack"></span>
+                                <!-- إضافة Blazor -->
+                                <span style="--i:16"><img src="assets/img/blazor.png" alt="Blazor"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="background" style="background-image:url(assets/img/background/img-6.jpg)"></div>
     </section>
-
-    <!-- Slide 7 (#95) -->
+    <!-- =========================================
+       SLIDE 6 - التواصل
+    ========================================= -->
     <section class="slide fade-12 kenBurns" data-name="download">
         <div class="content">
             <div class="container">
                 <div class="wrap" style="padding: 0px;">
-                        <div class="mainsocial">
-                            <div class="cardsocial">
-                                <a href="https://www.facebook.com/SystemDotProject?mibextid=ZbWKwL">
-                                    <i class="instagram lni lni-facebook-filled"
-                                        style="font-size: 30px;color: blue;"></i>
-                                </a>
-                            </div>
-                            <div class="cardsocial">
-                                <a href="https://x.com/Hnood91315469?s=09">
-                                    <svg height="30px" width="30px" viewBox="0 0 48 48"
-                                        xmlns="http://www.w3.org/2000/svg" class="twitter">
-                                        <path
-                                            d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429">
-                                        </path>
-                                    </svg>
-                                </a>
-                            </div>
-                            <div class="cardsocial">
-                                <a href="mailto:hnoodarkawit@gmail.com">
-                                    <i class="dribble lni lni-envelope" style="font-size: 30px;color: red;"></i>
-                                </a>
+                    <h1 style="font-family: 'Cairo', sans-serif; text-align: center; margin-bottom: 50px; grid-column: 1 / -1;" class="ae-1 fromLeft">
+                        <span style="display:block;font-size:2.5rem;" data-ar="الاتصالات" data-en="Communications">الاتصالات</span>
+                        <span style="display:block;font-size:1.5rem;opacity:0.5;margin-top:5px;" data-ar="تواصل معي" data-en="Get in touch with me"> تواصل معي</span>
+                    </h1>
 
-                            </div>
-                            <div class="cardsocial">
-                                <a
-                                    href="https://www.linkedin.com/in/hnoodarkawit?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
-                                    <i class="codepen lni lni-linkedin-original"
-                                        style="font-size: 30px;color: blue;"></i>
-                                </a>
-
-                            </div>
-                            <div class="cardsocial">
-                                <a href="https://youtube.com/@systemdotproject?si=JSRl2355v_ZRxLFz">
-                                    <i class="uiverse lni lni-youtube"
-                                        style="font-size: 30px;color: red;position: initial;"></i>
-                                </a>
-                            </div>
-                            <div class="cardsocial">
-                                <a href="Https://wa.me/+966594778592">
-                                    <i class="discord lni lni-whatsapp" style="font-size: 30px;color: green;"></i>
-                                </a>
-                            </div>
-                            <div class="cardsocial">
-                                <a href="https://github.com/HnoodArkawit">
-                                    <svg height="30px" width="30px" viewBox="0 0 30 30"
-                                        xmlns="http://www.w3.org/2000/svg" class="github">
-                                        <path
-                                            d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z">
-                                        </path>
-                                    </svg>
-                                </a>
-                            </div>
-                            <div class="cardsocial">
-                                <a href="Https://t.me/MuhanadHnood">
-                                    <svg height="30px" width="30px" viewBox="0 0 48 48"
-                                        xmlns="http://www.w3.org/2000/svg" class="telegram">
-                                        <path d="M24 4A20 20 0 1 0 24 44A20 20 0 1 0 24 4Z"></path>
-                                        <path
-                                            d="M33.95,15l-3.746,19.126c0,0-0.161,0.874-1.245,0.874c-0.576,0-0.873-0.274-0.873-0.274l-8.114-6.733 l-3.97-2.001l-5.095-1.355c0,0-0.907-0.262-0.907-1.012c0-0.625,0.933-0.923,0.933-0.923l21.316-8.468 c-0.001-0.001,0.651-0.235,1.126-0.234C33.667,14,34,14.125,34,14.5C34,14.75,33.95,15,33.95,15z"
-                                            fill="#fff"></path>
-                                        <path
-                                            d="M23,30.505l-3.426,3.374c0,0-0.149,0.115-0.348,0.12c-0.069,0.002-0.143-0.009-0.219-0.043 l0.964-5.965L23,30.505z"
-                                            fill="#b0bec5"></path>
-                                        <path
-                                            d="M29.897,18.196c-0.169-0.22-0.481-0.26-0.701-0.093L16,26c0,0,2.106,5.892,2.427,6.912 c0.322,1.021,0.58,1.045,0.58,1.045l0.964-5.965l9.832-9.096C30.023,18.729,30.064,18.416,29.897,18.196z"
-                                            fill="#cfd8dc"></path>
-                                    </svg>
-                                </a>
-                            </div>
-                            <div class="cardsocial">
-                                <a href="https://www.">
-                                    <i class="reddit lni lni-map-marker" style="color: white;font-size: 30px;"></i>
-                                </a>
-                            </div>
-                            <p style="font-family: 'Cairo', sans-serif;" class="text">تواصل<br><br>معنا<br><br>من هنا
-                            </p>
-                            <div class="main_back"></div>
+                    <div class="mainsocial">
+                        <div class="cardsocial">
+                            <a href="https://www.facebook.com/SystemDotProject?mibextid=ZbWKwL">
+                                <i class="instagram lni lni-facebook-filled"
+                                   style="font-size: 30px;color: blue;"></i>
+                            </a>
                         </div>
+                        <div class="cardsocial">
+                            <a href="https://x.com/Hnood91315469?s=09">
+                                <svg height="30px" width="30px" viewBox="0 0 48 48"
+                                     xmlns="http://www.w3.org/2000/svg" class="twitter">
+                                    <path d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="cardsocial">
+                            <a href="mailto:hnoodarkawit@gmail.com">
+                                <i class="dribble lni lni-envelope" style="font-size: 30px;color: red;"></i>
+                            </a>
 
+                        </div>
+                        <div class="cardsocial">
+                            <a href="https://www.linkedin.com/in/hnoodarkawit?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+                                <i class="codepen lni lni-linkedin-original"
+                                   style="font-size: 30px;color: blue;"></i>
+                            </a>
+
+                        </div>
+                        <div class="cardsocial">
+                            <a href="https://youtube.com/@systemdotproject?si=JSRl2355v_ZRxLFz">
+                                <i class="uiverse lni lni-youtube"
+                                   style="font-size: 30px;color: red;position: initial;"></i>
+                            </a>
+                        </div>
+                        <div class="cardsocial">
+                            <a href="Https://wa.me/+966594778592">
+                                <i class="discord lni lni-whatsapp" style="font-size: 30px;color: green;"></i>
+                            </a>
+                        </div>
+                        <div class="cardsocial">
+                            <a href="https://github.com/HnoodArkawit">
+                                <svg height="30px" width="30px" viewBox="0 0 30 30"
+                                     xmlns="http://www.w3.org/2000/svg" class="github">
+                                    <path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="cardsocial">
+                            <a href="Https://t.me/MuhanadHnood">
+                                <svg height="30px" width="30px" viewBox="0 0 48 48"
+                                     xmlns="http://www.w3.org/2000/svg" class="telegram">
+                                    <path d="M24 4A20 20 0 1 0 24 44A20 20 0 1 0 24 4Z"></path>
+                                    <path d="M33.95,15l-3.746,19.126c0,0-0.161,0.874-1.245,0.874c-0.576,0-0.873-0.274-0.873-0.274l-8.114-6.733 l-3.97-2.001l-5.095-1.355c0,0-0.907-0.262-0.907-1.012c0-0.625,0.933-0.923,0.933-0.923l21.316-8.468 c-0.001-0.001,0.651-0.235,1.126-0.234C33.667,14,34,14.125,34,14.5C34,14.75,33.95,15,33.95,15z"
+                                          fill="#fff"></path>
+                                    <path d="M23,30.505l-3.426,3.374c0,0-0.149,0.115-0.348,0.12c-0.069,0.002-0.143-0.009-0.219-0.043 l0.964-5.965L23,30.505z"
+                                          fill="#b0bec5"></path>
+                                    <path d="M29.897,18.196c-0.169-0.22-0.481-0.26-0.701-0.093L16,26c0,0,2.106,5.892,2.427,6.912 c0.322,1.021,0.58,1.045,0.58,1.045l0.964-5.965l9.832-9.096C30.023,18.729,30.064,18.416,29.897,18.196z"
+                                          fill="#cfd8dc"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="cardsocial">
+                            <a href="https://www.">
+                                <i class="reddit lni lni-map-marker" style="color: white;font-size: 30px;"></i>
+                            </a>
+                        </div>
+                        <p style="font-family: 'Cairo', sans-serif;" class="text">
+                            تواصل<br><br>معنا<br><br>من هنا
+                        </p>
+                        <div class="main_back"></div>
                     </div>
+
+                </div>
             </div>
         </div>
-        <div class="background" style="background-image:url(assets/img/background/img-3.jpg)"></div>
     </section>
 
-
-
-
-
-    <!-- Panel Bottom #01 -->
+    <!-- =========================================
+       الشريط السفلي
+    ========================================= -->
     <nav class="panel bottom forceMobileView">
         <div class="sections desktop">
-            <div class="left"><a href="#" class="opacity-8">Design by <a href="https://SystemdotProject.com"
-                        target="_blank">System dot Project</a></div>
-            <div class="center"><span class="nextSlide"><svg>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down"></use>
-                    </svg></span></div>
-            <div class="right"><span data-dropdown-id="2" class="button actionButton dropdownTrigger"><svg>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#share"></use>
-                    </svg></span></div>
+            <div class="left">
+                <a href="#" class="opacity-8">Design by <a href="https://SystemdotProject.com" target="_blank">System dot Project</a></a>
+            </div>
+            <div class="center">
+                <span class="nextSlide"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-down"></use></svg></span>
+            </div>
+            <div class="right">
+                <span data-dropdown-id="2" class="button actionButton dropdownTrigger"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#share"></use></svg></span>
+            </div>
         </div>
         <div class="sections compact hidden">
             <div class="right">
-                <span data-dropdown-id="2" class="button actionButton dropdownTrigger"><svg>
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#share"></use>
-                    </svg></span>
+                <span data-dropdown-id="2" class="button actionButton dropdownTrigger"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#share"></use></svg></span>
             </div>
         </div>
     </nav>
 
-    <!-- Share Window -->
-    <div class="dropdown share bottom right" data-dropdown-id="2" data-text="Take a look at this"
-        data-url="https://freehtml5.co"
-        data-pinterest-image="https://designmodo.com/wp-content/uploads/2015/10/Presentation.jpg">
+    <!-- =========================================
+       مشاركة
+    ========================================= -->
+    <div class="dropdown share bottom right" data-dropdown-id="2" data-text="Take a look at this">
         <div class="center padding-2" style="font-family: 'Cairo', sans-serif;font:bold">
-            <a href="#download">تواصل معانا</a>
+            <a href="#download" data-ar="تواصل معانا" data-en="Contact Us">تواصل معانا</a>
         </div>
     </div>
 
-    <!-- Loading Progress Bar -->
+    <!-- =========================================
+       شريط التقدم
+    ========================================= -->
     <div class="progress-bar blue"></div>
 
+    <!-- =========================================
+       مودال الصور
+    ========================================= -->
+    <div id="imageModal" class="image-modal">
+        <button type="button" class="close">&times;</button>
+        <img id="modalImage" alt="Preview">
+    </div>
+
+    <!-- =========================================
+       JavaScript
+    ========================================= -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+        /* =========================================
+           الوضع الليلي والنهاري - يعمل على كل الصفحة
+        ========================================= */
+        const themeBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeLabel = document.getElementById('themeLabel');
+        let isDarkMode = true;
+
+        if (themeBtn) {
+            themeBtn.addEventListener('click', function () {
+                document.body.classList.toggle('dark-mode');
+                isDarkMode = document.body.classList.contains('dark-mode');
+
+                if (isDarkMode) {
+                    themeIcon.innerText = "🌙";
+                    const isArabic = document.documentElement.lang === 'ar';
+                    themeLabel.innerText = isArabic ? "الوضع الليلي" : "Dark Mode";
+                } else {
+                    themeIcon.innerText = "☀️";
+                    const isArabic = document.documentElement.lang === 'ar';
+                    themeLabel.innerText = isArabic ? "الوضع النهاري" : "Light Mode";
+                }
+            });
+        }
+
+        /* =========================================
+           تغيير اللغة (عربي/إنجليزي)
+        ========================================= */
+        const langBtn = document.getElementById('langToggleBtn');
+        const langLabel = document.getElementById('langLabel');
+        let isArabic = true;
+
+        if (langBtn) {
+            langBtn.addEventListener('click', function () {
+                isArabic = !isArabic;
+
+                // تغيير اتجاه الصفحة
+                if (isArabic) {
+                    document.body.classList.remove('ltr-mode');
+                    document.documentElement.dir = 'rtl';
+                    document.documentElement.lang = 'ar';
+                    document.body.dir = 'rtl';
+                } else {
+                    document.body.classList.add('ltr-mode');
+                    document.documentElement.dir = 'ltr';
+                    document.documentElement.lang = 'en';
+                    document.body.dir = 'ltr';
+                }
+
+                // تحديث نص زر اللغة
+                langLabel.innerText = isArabic ? 'English' : 'عربي';
+
+                // تحديث نص زر الوضع الليلي بناءً على اللغة
+                const isDark = document.body.classList.contains('dark-mode');
+                if (isDark) {
+                    themeLabel.innerText = isArabic ? "الوضع الليلي" : "Dark Mode";
+                } else {
+                    themeLabel.innerText = isArabic ? "الوضع النهاري" : "Light Mode";
+                }
+
+                // تبديل النصوص في جميع العناصر
+                document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+                    if (isArabic) {
+                        el.textContent = el.getAttribute('data-ar');
+                    } else {
+                        el.textContent = el.getAttribute('data-en');
+                    }
+                });
+
+                // تحديث نصوص زر "المزيد"
+                document.querySelectorAll('.read-more-btn').forEach(btn => {
+                    const p = btn.previousElementSibling;
+                    if (p && p.classList && p.classList.contains('expanded')) {
+                        btn.innerText = isArabic ? "إخفاء" : "Show Less";
+                    } else {
+                        btn.innerText = isArabic ? "المزيد" : "Read More";
+                    }
+                });
+
+                // تحديث نصوص عناصر .lang-text
+                document.querySelectorAll('.lang-text').forEach(el => {
+                    if (isArabic) {
+                        if (el.hasAttribute('data-ar')) el.innerHTML = el.getAttribute('data-ar');
+                    } else {
+                        if (el.hasAttribute('data-en')) el.innerHTML = el.getAttribute('data-en');
+                    }
+                });
+            });
+        }
+
+        /* =========================================
+           المودال وقراءة المزيد
+        ========================================= */
+        document.addEventListener("click", function (e) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+
+            // المزيد / إخفاء
+            if (e.target.classList.contains("read-more-btn")) {
+                const p = e.target.previousElementSibling;
+                if (p && p.classList.contains('short-text')) {
+                    p.classList.toggle("expanded");
+                    if (p.classList.contains("expanded")) {
+                        e.target.innerText = isArabic ? "إخفاء" : "Show Less";
+                    } else {
+                        e.target.innerText = isArabic ? "المزيد" : "Read More";
+                    }
+                }
+            }
+
+            // فتح الصورة
+            if (e.target.classList.contains("preview-image")) {
+                modal.style.display = "block";
+                modalImg.src = e.target.src;
+                document.body.style.overflow = "hidden";
+            }
+
+            // إغلاق المودال
+            if (e.target.id === "imageModal" || e.target.classList.contains("close")) {
+                modal.style.display = "none";
+                document.body.style.overflow = "";
+            }
+        });
+
+        // إغلاق المودال بالضغط على ESC
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById("imageModal");
+                modal.style.display = "none";
+                document.body.style.overflow = "";
+            }
+        });
+
+        /* =========================================
+           تحسين عرض الكاروسيل عند تغيير اللغة
+        ========================================= */
+        // إعادة تشغيل الأنيميشن عند تغيير اللغة لتحديث التوزيع
+        const langObserver = new MutationObserver(function () {
+            const box = document.querySelector('.box');
+            if (box) {
+                box.style.animation = 'none';
+                requestAnimationFrame(() => {
+                    box.style.animation = 'animateCarousel 35s linear infinite';
+                });
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const observer = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    if (mutation.attributeName === 'lang' || mutation.attributeName === 'dir') {
+                        const box = document.querySelector('.box');
+                        if (box) {
+                            box.style.animation = 'none';
+                            requestAnimationFrame(() => {
+                                box.style.animation = 'animateCarousel 35s linear infinite';
+                            });
+                        }
+                    }
+                });
+            });
+            observer.observe(document.documentElement, { attributes: true });
+        });
+    </script>
+
 </body>
-<div id="imageModal" class="image-modal">
-    <button style="color:black" type="button" class="close">&times;</button>
-    <img id="modalImage">
-</div>
 </html>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-<script src="lib/sweetalert/sweetalert.min.js"></script>
-<script>
-    document.addEventListener("click", function (e) {
-
-        const modal = document.getElementById("imageModal");
-        const modalImg = document.getElementById("modalImage");
-
-        /* =====================
-           المزيد / إخفاء
-        ===================== */
-        if (e.target.classList.contains("read-more-btn")) {
-
-            const p = e.target.previousElementSibling;
-
-            p.classList.toggle("expanded");
-
-            e.target.innerText =
-                p.classList.contains("expanded")
-                    ? "إخفاء"
-                    : "المزيد";
-        }
-
-        /* =====================
-           فتح الصورة
-        ===================== */
-        if (e.target.classList.contains("preview-image")) {
-            modal.style.display = "block";
-            modalImg.src = e.target.src;
-        }
-
-        /* =====================
-           إغلاق المودال
-        ===================== */
-        if (e.target.id === "imageModal" ||
-            e.target.classList.contains("close")) {
-            modal.style.display = "none";
-        }
-
-    });
-</script>
